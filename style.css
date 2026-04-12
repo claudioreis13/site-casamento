@@ -23,12 +23,13 @@ body::before {
   z-index: -1;
 }
 
-/* CERIMÔNIA */
-body.cerimonia {
+/* ===== CERIMÔNIA ===== */
+
+body.cerimonia-bg {
   background: url('imagens/igreja.jpg') center/cover no-repeat fixed;
 }
 
-body.cerimonia::before {
+body.cerimonia-bg::before {
   background: rgba(0,0,0,0.4);
 }
 
@@ -78,13 +79,64 @@ nav a.ativo {
 
 /* SECTION */
 section {
-  background: rgba(255,255,255,0.9);
+  background: transparent; /* REMOVE O FUNDO GERAL */
+  padding: 20px;
+}
+
+/* ===== CERIMÔNIA BOX ===== */
+
+.cerimonia-box {
+  background: rgba(255,255,255,0.95);
   backdrop-filter: blur(6px);
-  margin: 40px auto;
-  padding: 30px;
-  max-width: 1200px;
+
+  margin: 60px auto;
+  padding: 30px 25px;
+
   border-radius: 20px;
   text-align: center;
+
+  max-width: 500px; /* 🔥 menor */
+  width: 100%;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* ✨ deixa chique */
+}
+
+.cerimonia-box h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.cerimonia-box .info {
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+/* BOTÕES LOCAL */
+.botoes-local {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+/* WAZE */
+.btn-waze {
+  background: #33ccff;
+  color: white;
+  padding: 14px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* GOOGLE MAPS */
+.btn-maps {
+  background: #ea4335;
+  color: white;
+  padding: 14px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
 }
 
 /* CONTADOR */
@@ -227,18 +279,6 @@ section {
   width: 18px;
 }
 
-/* WAZE */
-.btn-waze {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 12px 20px;
-  background: #33ccff;
-  color: white;
-  text-decoration: none;
-  border-radius: 10px;
-  font-weight: 600;
-}
-
 /* ANIMAÇÃO DINHEIRO */
 .efeito-dinheiro {
   position: fixed;
@@ -260,7 +300,7 @@ footer {
   color: white;
 }
 
-/* ===== RESPONSIVIDADE PROFISSIONAL ===== */
+/* ===== RESPONSIVIDADE ===== */
 
 /* TABLET */
 @media (max-width: 1024px) {
@@ -302,6 +342,21 @@ footer {
     margin: 20px 10px;
     padding: 20px;
   }
+
+  /* CERIMÔNIA MOBILE MELHORADA */
+  .cerimonia-box {
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(6px);
+
+  margin: 40px auto; /* CENTRALIZA */
+  padding: 30px 20px;
+
+  border-radius: 20px;
+  text-align: center;
+
+  max-width: 700px; /* limita largura */
+  width: 90%;
+}
 }
 
 /* CELULAR PEQUENO */
