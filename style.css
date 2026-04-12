@@ -6,7 +6,7 @@
   font-family: 'Poppins', sans-serif;
 }
 
-/* BODY COM BACKGROUND */
+/* BODY PADRÃO */
 body {
   background: url('imagens/casamento.jpg') center/cover no-repeat fixed;
 }
@@ -21,6 +21,15 @@ body::before {
   top: 0;
   left: 0;
   z-index: -1;
+}
+
+/* CERIMÔNIA */
+body.cerimonia {
+  background: url('imagens/igreja.jpg') center/cover no-repeat fixed;
+}
+
+body.cerimonia::before {
+  background: rgba(0,0,0,0.4);
 }
 
 /* NAV */
@@ -73,7 +82,7 @@ section {
   backdrop-filter: blur(6px);
   margin: 40px auto;
   padding: 30px;
-  max-width: 1100px;
+  max-width: 1200px;
   border-radius: 20px;
   text-align: center;
 }
@@ -104,41 +113,35 @@ section {
 .lista-presentes {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  margin-top: 20px;
+  gap: 25px;
+  margin-top: 25px;
 }
 
 .presente {
   background: #fff;
-  padding: 15px;
-  border-radius: 15px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-
+  padding: 18px;
+  border-radius: 18px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.12);
   display: flex;
   flex-direction: column;
-  height: 100%;
 }
 
 .presente img {
   width: 100%;
-  height: 160px;
+  height: 200px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 12px;
 }
 
 .presente h3 {
-  font-size: 15px;
-  margin: 10px 0 5px;
-
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  font-size: 16px;
+  margin: 12px 0 6px;
 }
 
 .presente p {
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  font-size: 15px;
 }
 
 .presente button {
@@ -146,8 +149,8 @@ section {
   background: #c97b84;
   color: white;
   border: none;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 12px;
+  border-radius: 12px;
   cursor: pointer;
   transition: 0.2s;
 }
@@ -196,29 +199,47 @@ section {
 }
 
 .modal-botoes button {
-  padding: 10px;
-  border-radius: 10px;
+  padding: 12px;
+  border-radius: 12px;
   border: none;
   background: #c97b84;
   color: white;
   cursor: pointer;
 }
 
-.modal-botoes a {
-  text-decoration: none;
-}
-
-/* BOTÃO WHATSAPP */
+/* WHATSAPP */
 .btn-whatsapp {
   background: #25D366;
+  color: white;
+  padding: 12px;
+  border-radius: 12px;
+  text-decoration: none;
+
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
+
+  font-weight: 500;
 }
 
-/* ===== ANIMAÇÃO DINHEIRO ===== */
+.btn-whatsapp img {
+  width: 18px;
+}
 
+/* WAZE */
+.btn-waze {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 20px;
+  background: #33ccff;
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+/* ANIMAÇÃO DINHEIRO */
 .efeito-dinheiro {
   position: fixed;
   font-size: 24px;
@@ -228,24 +249,49 @@ section {
 }
 
 @keyframes subirDinheiro {
-  0% { opacity: 1; transform: translateY(0) scale(1); }
+  0% { opacity: 1; transform: translateY(0); }
   100% { opacity: 0; transform: translateY(-60px) scale(1.5); }
 }
 
-/* ===== FOOTER ===== */
-
+/* FOOTER */
 footer {
   text-align: center;
   padding: 20px;
   color: white;
 }
 
-/* ===== MOBILE ===== */
+/* ===== RESPONSIVIDADE PROFISSIONAL ===== */
 
+/* TABLET */
+@media (max-width: 1024px) {
+  .lista-presentes {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* CELULAR */
 @media (max-width: 768px) {
+  .lista-presentes {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
 
-  nav {
-    gap: 8px;
+  .presente img {
+    height: 160px;
+  }
+
+  .presente h3 {
+    font-size: 14px;
+  }
+
+  .presente p {
+    font-size: 14px;
+  }
+
+  .contador {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
   }
 
   nav a {
@@ -256,52 +302,15 @@ footer {
     margin: 20px 10px;
     padding: 20px;
   }
+}
 
-  .contador {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
-
-  .hero h1 {
-    font-size: 38px;
-  }
-
-  .hero h2 {
-    font-size: 18px;
-  }
-
-  .hero p {
-    font-size: 16px;
-  }
-
+/* CELULAR PEQUENO */
+@media (max-width: 480px) {
   .lista-presentes {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
   }
-}
 
-/* BOTÃO WHATSAPP */
-.btn-whatsapp {
-  background: #25D366;
-  color: white;
-  padding: 10px;
-  border-radius: 10px;
-  text-decoration: none;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-
-  font-weight: 500;
-  transition: 0.2s;
-}
-
-.btn-whatsapp img {
-  width: 18px;
-  height: 18px;
-}
-
-.btn-whatsapp:hover {
-  transform: scale(1.05);
+  .presente img {
+    height: 180px;
+  }
 }
