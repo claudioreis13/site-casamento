@@ -79,8 +79,9 @@ nav a.ativo {
 
 /* SECTION */
 section {
-  background: transparent; /* REMOVE O FUNDO GERAL */
+  background: transparent;
   padding: 20px;
+  display: block;
 }
 
 /* ===== CERIMÔNIA BOX ===== */
@@ -368,4 +369,53 @@ footer {
   .presente img {
     height: 180px;
   }
+
+.boas-vindas {
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(6px);
+
+  margin: 40px auto;
+  padding: 30px 20px;
+
+  border-radius: 20px;
+
+  max-width: 700px;
+  width: 90%;
+
+  text-align: center;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.boas-vindas h2 {
+  margin-bottom: 10px;
+}
+
+.boas-vindas p {
+  margin-bottom: 20px;
+}
+
+.boas-vindas {
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(6px);
+
+  margin: 40px auto;
+  padding: 30px 20px;
+
+  border-radius: 20px;
+  text-align: center;
+
+  max-width: 700px;
+  width: 90%;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.boas-vindas h2 {
+  margin-bottom: 10px;
+}
+
+.boas-vindas p {
+  margin-bottom: 20px;
+}
 }
