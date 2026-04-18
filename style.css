@@ -345,28 +345,3 @@ footer {
   color: #c97b84;
   transform: scale(1.05);
 }
-
-/* ===== RESPONSIVO (CELULAR) ===== */
-@media (max-width: 768px) {
-
-  .presente img {
-    height: auto;
-    object-fit: contain;
-    background: #fff;
-    padding: 5px;
-  }
-
-  .hero h1 {
-    font-size: 40px;
-  }
-
-  .contador {
-    gap: 10px;
-  }
-
-  .tempo {
-    width: 70px;
-    padding: 10px;
-  }
-
-}
