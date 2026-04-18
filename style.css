@@ -345,3 +345,15 @@ footer {
   color: #c97b84;
   transform: scale(1.05);
 }
+
+/* ===== AJUSTE SEGURO DAS IMAGENS (SÓ MOBILE) ===== */
+@media (max-width: 768px) {
+
+  .lista-presentes .presente img {
+    height: 180px;           /* mantém padrão */
+    object-fit: contain;     /* NÃO corta */
+    background: #fff;        /* evita espaços feios */
+    padding: 5px;
+  }
+
+}
