@@ -27,17 +27,23 @@ function comprar(botao) {
   const card = botao.closest(".presente");
   const valor = card.querySelector("p").innerText;
 
-  document.getElementById("modal-valor").innerText = "👉 Valor: " + valor;
+  document.getElementById("modal-valor").innerText = valor;
   document.getElementById("modal-pix").innerText = "cr.reis@live.com";
 
-  document.getElementById("modal-recado").innerText =
-    "💬 Se preferir pagar de outra forma (cartão de crédito, transferência ou da sua preferência), entre em contato com a Bruna 💖";
+  const modal = document.getElementById("modal");
+  modal.style.display = "flex";
 
-  document.getElementById("modal").style.display = "flex";
+  setTimeout(() => modal.classList.add("ativo"), 10);
 }
 
 function fecharModal() {
-  document.getElementById("modal").style.display = "none";
+  const modal = document.getElementById("modal");
+
+  modal.classList.remove("ativo");
+
+  setTimeout(() => {
+    modal.style.display = "none";
+  }, 300);
 }
 
 function copiarPix() {
@@ -80,40 +86,4 @@ document.addEventListener("DOMContentLoaded", () => {
       comprar(botao);
     });
   });
-});
-
-// ===== SKELETON AUTOMÁTICO =====
-
-window.addEventListener("load", () => {
-
-  const skeleton = document.createElement("div");
-  skeleton.className = "skeleton-overlay";
-
-  skeleton.innerHTML = `
-    <div class="skeleton-container">
-
-      ${Array(8).fill(`
-        <div class="skeleton-card">
-          <div class="skeleton skel-img"></div>
-          <div class="skeleton skel-line"></div>
-          <div class="skeleton skel-line"></div>
-          <div class="skeleton skel-btn"></div>
-        </div>
-      `).join("")}
-
-    </div>
-  `;
-
-  document.body.appendChild(skeleton);
-
-  setTimeout(() => {
-    skeleton.style.opacity = "0";
-    skeleton.style.transition = "0.4s";
-
-    setTimeout(() => {
-      skeleton.remove();
-    }, 400);
-
-  }, 800);
-
 });
