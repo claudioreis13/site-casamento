@@ -81,3 +81,39 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+// ===== SKELETON AUTOMÁTICO =====
+
+window.addEventListener("load", () => {
+
+  const skeleton = document.createElement("div");
+  skeleton.className = "skeleton-overlay";
+
+  skeleton.innerHTML = `
+    <div class="skeleton-container">
+
+      ${Array(8).fill(`
+        <div class="skeleton-card">
+          <div class="skeleton skel-img"></div>
+          <div class="skeleton skel-line"></div>
+          <div class="skeleton skel-line"></div>
+          <div class="skeleton skel-btn"></div>
+        </div>
+      `).join("")}
+
+    </div>
+  `;
+
+  document.body.appendChild(skeleton);
+
+  setTimeout(() => {
+    skeleton.style.opacity = "0";
+    skeleton.style.transition = "0.4s";
+
+    setTimeout(() => {
+      skeleton.remove();
+    }, 400);
+
+  }, 800);
+
+});
