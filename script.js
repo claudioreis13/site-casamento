@@ -14,6 +14,147 @@ const CONFIG = {
   whatsapp: "https://wa.me/5535997167717?text=oii%20Bruna"
 };
 
+// ===== LISTA DE PRESENTES =====
+// Para adicionar, remover ou editar um presente, mexa só aqui!
+const PRESENTES = [
+  { id: "jantar",        nome: "Aparelho de jantar",                                         preco: 500.00,   img: "imagens/jantar.jpg" },
+  { id: "ar",           nome: "Ar condicionado 12.000 btu",                                  preco: 2200.00,  img: "imagens/ar.jpg" },
+  { id: "netflix",      nome: "1 ano de Netflix",                                             preco: 600.00,   img: "imagens/netflix.jpg" },
+  { id: "esmeril",      nome: "Acessório para cortar a unha do dedão do noivo",               preco: 200.00,   img: "imagens/esmerilhadeira.jpg",  humor: true },
+  { id: "cabeceira",    nome: "Cabeceira King Size",                                          preco: 800.00,   img: "imagens/cabeceira.jpg" },
+  { id: "batedeira",    nome: "Batedeira Philco",                                             preco: 450.10,   img: "imagens/batedeira.jpg" },
+  { id: "rochele",      nome: "É claro que eu posso pagar, meu marido tem 2 empregos 😂",    preco: 700.00,   img: "imagens/rochele.jpg",          humor: true },
+  { id: "cobreleito",   nome: "Cobreleito king",                                              preco: 477.67,   img: "imagens/cobreleito.jpg" },
+  { id: "louca",        nome: "Lava louças 10 serviços",                                      preco: 2950.00,  img: "imagens/louca.jpg" },
+  { id: "microondas",   nome: "Microondas 30 litros",                                         preco: 650.00,   img: "imagens/microondas.jpg" },
+  { id: "patolino",     nome: "Seja meu convidado preferido",                                 preco: 700.00,   img: "imagens/patolino.jpg",         humor: true },
+  { id: "razao",        nome: "Cobertor para a noiva que está coberta de razão",              preco: 200.00,   img: "imagens/razao.jpg",            humor: true },
+  { id: "toalha",       nome: "Jogo de toalha banhão",                                        preco: 182.27,   img: "imagens/toalha.jpg" },
+  { id: "edredon",      nome: "Edredon Queen 300 fios",                                       preco: 500.00,   img: "imagens/edredon.jpg" },
+  { id: "purificador",  nome: "Purificador de água",                                          preco: 500.00,   img: "imagens/purificador.jpg" },
+  { id: "buque",        nome: "Aumente em 30% sua chance de pegar o buquê",                  preco: 150.00,   img: "imagens/buque.jpg",            humor: true },
+  { id: "convidado",    nome: "Levar alguém que não foi convidado",                           preco: 7965.49,  img: "imagens/convidado.jpg",        humor: true },
+  { id: "cueca",        nome: "Cueca sexy para lua de mel",                                   preco: 100.00,   img: "imagens/cueca.jpg",            humor: true },
+  { id: "ronaldo",      nome: "Corte de cabelo do noivo por 6 meses",                        preco: 500.00,   img: "imagens/ronaldo.jpg",          humor: true },
+  { id: "assadeiras",   nome: "Conjunto de assadeiras Marinex",                               preco: 121.00,   img: "imagens/assadeiras.jpg" },
+  { id: "tv",           nome: 'TV 60"',                                                       preco: 3000.00,  img: "imagens/tv.jpg" },
+  { id: "parafusadeira",nome: "Parafusadeira e furadeira",                                    preco: 500.00,   img: "imagens/parafusadeira.jpg" },
+  { id: "julius",       nome: "Só pra dizer que não dei nada",                                preco: 20.00,    img: "imagens/julius.jpg",           humor: true },
+  { id: "tacas",        nome: "Taças de vinho",                                               preco: 50.00,    img: "imagens/tacas.jpg" },
+  { id: "tigela",       nome: "Conjunto de bowls",                                            preco: 50.00,    img: "imagens/tigela.jpg" },
+  { id: "boleira",      nome: "Boleira com tampa",                                            preco: 50.00,    img: "imagens/boleira.jpg" },
+  { id: "aspirador",    nome: "Aspirador 2 em 1",                                             preco: 200.00,   img: "imagens/aspirador.jpg" },
+  { id: "panela",       nome: "Panela de pressão elétrica",                                   preco: 500.00,   img: "imagens/panela.jpg" },
+  { id: "cadeira",      nome: "Cadeira ergonômica",                                           preco: 600.00,   img: "imagens/cadeira.jpg" },
+  { id: "mixer",        nome: "Mixer 3 em 1",                                                 preco: 170.00,   img: "imagens/mixer.jpg" },
+  { id: "cristaleira",  nome: "Cristaleira retrô",                                            preco: 470.00,   img: "imagens/cristaleira.jpg" },
+  { id: "americano",    nome: "Jogo americano crochê",                                        preco: 70.00,    img: "imagens/americano.jpg" },
+  { id: "espelho",      nome: "Espelho corpo inteiro",                                        preco: 478.00,   img: "imagens/espelho.jpg" },
+  { id: "jarra",        nome: "Kit jarra + taças",                                            preco: 70.00,    img: "imagens/jarra.jpg" },
+  { id: "panificadora", nome: "Panificadora",                                                 preco: 550.00,   img: "imagens/panificadora.jpg" },
+  { id: "chaleira",     nome: "Chaleira elétrica",                                            preco: 150.00,   img: "imagens/chaleira.jpg" },
+  { id: "navio",        nome: "Ajuda na lua de mel",                                          preco: 1000.00,  img: "imagens/navio.jpg" },
+  { id: "sobremesa",    nome: "Taças de sobremesa",                                           preco: 76.00,    img: "imagens/sobremesa.jpg" },
+  { id: "processador",  nome: "Multiprocessador Powerchop Philips Walita 127v",               preco: 500.00,   img: "imagens/processador.jpg" },
+  { id: "criado",       nome: "Kit 2 Un Mesa de Cabeceira Sofia Estilo Industrial",           preco: 352.00,   img: "imagens/criado.jpg" },
+  { id: "lateral",      nome: "Mesa Lateral para Sofá com Espelho Luxo",                      preco: 114.00,   img: "imagens/lateral.jpg" },
+  { id: "organizador",  nome: "Kit 4 Organizadores de Geladeira 3.8 Litros",                 preco: 76.00,    img: "imagens/organizador.jpg" },
+  { id: "pote",         nome: "Kit 3 a 10 Potes Herméticos 2L Dispenser Organizador Lavanderia", preco: 100.00, img: "imagens/pote.jpg" },
+  { id: "centro",       nome: "Kit 2 Mesas De Centro Madeira Design Orgânico Sala De Estar", preco: 285.00,   img: "imagens/centro.jpg" },
+];
+
+// ===== RENDER PRESENTES =====
+function formatarPreco(preco) {
+  return preco.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+}
+
+function reservados() {
+  try { return JSON.parse(localStorage.getItem("reservados") || "[]"); }
+  catch { return []; }
+}
+
+function marcarReservado(id) {
+  const lista = reservados();
+  if (!lista.includes(id)) lista.push(id);
+  localStorage.setItem("reservados", JSON.stringify(lista));
+}
+
+function renderPresentes(lista) {
+  const container = document.querySelector(".lista-presentes");
+  if (!container) return;
+
+  const res = reservados();
+
+  container.innerHTML = lista.map(p => {
+    const estaReservado = res.includes(p.id);
+    return `
+    <div class="presente${estaReservado ? " reservado" : ""}" data-id="${p.id}" data-preco="${p.preco}">
+      ${p.humor ? '<span class="badge-humor">😄 Surpresa</span>' : ''}
+      <img src="${p.img}" alt="${p.nome}" loading="lazy">
+      <h3 title="${p.nome}">${p.nome}</h3>
+      <p>${formatarPreco(p.preco)}</p>
+      <button class="btn-presentear"${estaReservado ? " disabled" : ""}>
+        ${estaReservado ? "✓ Reservado" : "Presentear"}
+      </button>
+    </div>`;
+  }).join("");
+
+  // Atualiza contador
+  atualizarContadorResultados(lista.length);
+
+  // Rebind event listeners
+  container.querySelectorAll(".btn-presentear:not([disabled])").forEach(botao => {
+    botao.addEventListener("click", (event) => {
+      efeitoClique(event);
+      comprar(botao);
+    });
+  });
+}
+
+function atualizarContadorResultados(n) {
+  const el = document.getElementById("contador-resultados");
+  if (el) el.innerText = `${n} presente${n !== 1 ? "s" : ""}`;
+}
+
+// ===== FILTRO + BUSCA + ORDENAÇÃO =====
+let estadoAtual = { termo: "", faixa: "todos", ordem: "padrao" };
+
+function aplicarFiltros() {
+  let lista = [...PRESENTES];
+  const { termo, faixa, ordem } = estadoAtual;
+
+  // Busca
+  if (termo) lista = lista.filter(p => p.nome.toLowerCase().includes(termo));
+
+  // Faixa de preço
+  if (faixa === "ate200")    lista = lista.filter(p => p.preco <= 200);
+  if (faixa === "200a500")   lista = lista.filter(p => p.preco > 200  && p.preco <= 500);
+  if (faixa === "500a1000")  lista = lista.filter(p => p.preco > 500  && p.preco <= 1000);
+  if (faixa === "acima1000") lista = lista.filter(p => p.preco > 1000);
+
+  // Ordenação
+  if (ordem === "menor") lista.sort((a, b) => a.preco - b.preco);
+  if (ordem === "maior") lista.sort((a, b) => b.preco - a.preco);
+  if (ordem === "az")    lista.sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR"));
+
+  renderPresentes(lista);
+
+  // Mensagem de nenhum resultado
+  const container = document.querySelector(".lista-presentes");
+  const semResultado = document.getElementById("sem-resultado");
+  if (lista.length === 0) {
+    if (!semResultado) {
+      const div = document.createElement("div");
+      div.id = "sem-resultado";
+      div.className = "sem-resultado";
+      div.innerText = "Nenhum presente encontrado 😕";
+      container.appendChild(div);
+    }
+  } else {
+    semResultado?.remove();
+  }
+}
+
 // ===== NAV & FOOTER DINÂMICOS =====
 function renderNav() {
   const pagina = window.location.pathname.split('/').pop() || 'index.html';
@@ -27,6 +168,23 @@ function renderNav() {
   ).join('')}</nav>`;
 }
 
+function navegarCom(href) {
+  document.body.classList.add('saindo');
+  setTimeout(() => { window.location.href = href; }, 200);
+}
+
+function interceptarLinks() {
+  document.querySelectorAll('a[href]').forEach(a => {
+    const href = a.getAttribute('href');
+    if (!href || href.startsWith('http') || href.startsWith('#') || href.startsWith('tel') || href.startsWith('mailto')) return;
+    if (a.target === '_blank') return;
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      navegarCom(href);
+    });
+  });
+}
+
 function renderFooter() {
   return `<footer>
     <p>Bruna &amp; Cláudio 💖</p>
@@ -36,66 +194,58 @@ function renderFooter() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Injeta nav e footer se existirem os placeholders
   const navEl = document.getElementById('nav-placeholder');
   const footerEl = document.getElementById('footer-placeholder');
   if (navEl) navEl.outerHTML = renderNav();
   if (footerEl) footerEl.outerHTML = renderFooter();
 
-  // Injeta dados do casamento na página de cerimônia
-  // Preenche data contextual do contador
+  // Data contextual do contador
   const dataLabel = document.getElementById('contador-data-label');
   if (dataLabel) dataLabel.innerText = CONFIG.dataFormatada + ' • ' + CONFIG.horarioCerimonia;
 
+  // Dados da cerimônia
   const campos = {
-    'cer-data':             CONFIG.dataFormatada,
-    'cer-horario':          CONFIG.horarioCerimonia,
-    'cer-local':            CONFIG.local,
-    'cer-endereco':         CONFIG.endereco,
-    'cer-hr-recepcao':      CONFIG.horarioRecepcao,
-    'cer-hr-cerimonia':     CONFIG.horarioCerimonia,
-    'cer-hr-festa':         CONFIG.horarioFesta,
+    'cer-data':         CONFIG.dataFormatada,
+    'cer-horario':      CONFIG.horarioCerimonia,
+    'cer-local':        CONFIG.local,
+    'cer-endereco':     CONFIG.endereco,
+    'cer-hr-recepcao':  CONFIG.horarioRecepcao,
+    'cer-hr-cerimonia': CONFIG.horarioCerimonia,
+    'cer-hr-festa':     CONFIG.horarioFesta,
   };
   Object.entries(campos).forEach(([id, val]) => {
     const el = document.getElementById(id);
     if (el) el.innerText = val;
   });
 
-  // Injeta URLs dos botões de navegação
   const btnWaze  = document.getElementById('btn-waze');
   const btnGmaps = document.getElementById('btn-gmaps');
   if (btnWaze)  btnWaze.href  = CONFIG.wazeUrl;
   if (btnGmaps) btnGmaps.href = CONFIG.gmapsUrl;
 
-  // Botões de presentear
-  const botoes = document.querySelectorAll(".btn-presentear");
-  botoes.forEach((botao) => {
-    botao.addEventListener("click", (event) => {
-      const card = botao.closest(".presente");
-      if (card.classList.contains("reservado")) return;
-      efeitoClique(event);
-      comprar(botao);
-    });
-  });
+  // Renderiza presentes a partir do array
+  if (document.querySelector(".lista-presentes")) {
+    renderPresentes(PRESENTES);
 
-  // Fechar modal clicando no overlay
-  const modal = document.getElementById("modal");
-  if (modal) {
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) fecharModal();
-    });
+    // Controles
+    const busca  = document.getElementById("busca-presente");
+    const filtro = document.getElementById("filtro-preco");
+    const ordem  = document.getElementById("ordenacao");
+
+    if (busca)  busca.addEventListener("input",  () => { estadoAtual.termo = busca.value.toLowerCase(); aplicarFiltros(); });
+    if (filtro) filtro.addEventListener("change", () => { estadoAtual.faixa = filtro.value; aplicarFiltros(); });
+    if (ordem)  ordem.addEventListener("change",  () => { estadoAtual.ordem = ordem.value; aplicarFiltros(); });
   }
 
-  // Fechar modal com ESC
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") fecharModal();
-  });
+  // Modal
+  const modal = document.getElementById("modal");
+  if (modal) {
+    modal.addEventListener("click", (e) => { if (e.target === modal) fecharModal(); });
+  }
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") fecharModal(); });
 
-  // Busca e filtro de presentes
-  const busca = document.getElementById("busca-presente");
-  const filtro = document.getElementById("filtro-preco");
-  if (busca) busca.addEventListener("input", filtrarPresentes);
-  if (filtro) filtro.addEventListener("change", filtrarPresentes);
+  interceptarLinks();
+  window.scrollTo(0, 0);
 });
 
 // ===== CONTADOR =====
@@ -113,70 +263,43 @@ function atualizarContador() {
   }
 
   const pad = (n) => String(n).padStart(2, "0");
-  document.getElementById("dias").innerText    = pad(Math.floor(diferenca / (1000 * 60 * 60 * 24)));
-  document.getElementById("horas").innerText   = pad(Math.floor((diferenca / (1000 * 60 * 60)) % 24));
-  document.getElementById("minutos").innerText = pad(Math.floor((diferenca / (1000 * 60)) % 60));
-  document.getElementById("segundos").innerText= pad(Math.floor((diferenca / 1000) % 60));
+  document.getElementById("dias").innerText     = pad(Math.floor(diferenca / (1000 * 60 * 60 * 24)));
+  document.getElementById("horas").innerText    = pad(Math.floor((diferenca / (1000 * 60 * 60)) % 24));
+  document.getElementById("minutos").innerText  = pad(Math.floor((diferenca / (1000 * 60)) % 60));
+  document.getElementById("segundos").innerText = pad(Math.floor((diferenca / 1000) % 60));
 }
 
 setInterval(atualizarContador, 1000);
 atualizarContador();
-
-// ===== BUSCA E FILTRO =====
-function filtrarPresentes() {
-  const termo = (document.getElementById("busca-presente")?.value || "").toLowerCase();
-  const faixa = document.getElementById("filtro-preco")?.value || "todos";
-  const cards = document.querySelectorAll(".presente");
-  let visiveis = 0;
-
-  cards.forEach(card => {
-    const nome = card.querySelector("h3")?.innerText.toLowerCase() || "";
-    const valorStr = card.querySelector("p")?.innerText.replace(/[R$\s.]/g, "").replace(",", ".") || "0";
-    const valor = parseFloat(valorStr);
-
-    const passaBusca = nome.includes(termo);
-    let passaFiltro = true;
-    if (faixa === "ate200") passaFiltro = valor <= 200;
-    else if (faixa === "200a500") passaFiltro = valor > 200 && valor <= 500;
-    else if (faixa === "500a1000") passaFiltro = valor > 500 && valor <= 1000;
-    else if (faixa === "acima1000") passaFiltro = valor > 1000;
-
-    const visivel = passaBusca && passaFiltro;
-    card.style.display = visivel ? "" : "none";
-    if (visivel) visiveis++;
-  });
-
-  const contador = document.getElementById("contador-resultados");
-  if (contador) contador.innerText = `${visiveis} presente${visiveis !== 1 ? "s" : ""} encontrado${visiveis !== 1 ? "s" : ""}`;
-
-  // Mensagem de nenhum resultado
-  const lista = document.querySelector(".lista-presentes");
-  const semResultado = document.getElementById("sem-resultado");
-  if (visiveis === 0) {
-    if (!semResultado) {
-      const div = document.createElement("div");
-      div.id = "sem-resultado";
-      div.className = "sem-resultado";
-      div.innerText = "Nenhum presente encontrado 😕";
-      lista.appendChild(div);
-    }
-  } else {
-    semResultado?.remove();
-  }
-}
 
 // ===== MODAL =====
 let presenteSelecionado = null;
 
 function comprar(botao) {
   const card = botao.closest(".presente");
-  const nome = card.querySelector("h3").innerText;
-  const valor = card.querySelector("p").innerText;
+  const id    = card.dataset.id;
+  const presente = PRESENTES.find(p => p.id === id);
+  if (!presente) return;
+
   presenteSelecionado = card;
 
-  document.getElementById("modal-valor").innerText = valor;
-  document.getElementById("modal-pix").innerText = CONFIG.pix;
-  document.getElementById("modal-recado").innerText = "Presente escolhido: " + nome;
+  // Preenche modal
+  document.getElementById("modal-img").src         = presente.img;
+  document.getElementById("modal-img").alt         = presente.nome;
+  document.getElementById("modal-nome").innerText  = presente.nome;
+  document.getElementById("modal-valor").innerText = formatarPreco(presente.preco);
+  document.getElementById("modal-pix").innerText   = CONFIG.pix;
+
+  // WhatsApp com nome do presente
+  const msg = encodeURIComponent("Oii Bruna! Quero presentear vocês com: " + presente.nome);
+  const btnWpp = document.getElementById("btn-whatsapp-modal");
+  if (btnWpp) btnWpp.href = "https://wa.me/5535997167717?text=" + msg;
+
+  // Reseta estado
+  const btnPix = document.querySelector(".btn-pix");
+  if (btnPix) { btnPix.innerText = "Copiar PIX"; btnPix.style.background = ""; }
+  const proximoPasso = document.getElementById("modal-proximo-passo");
+  if (proximoPasso) proximoPasso.style.display = "none";
 
   const modal = document.getElementById("modal");
   modal.style.display = "flex";
@@ -192,20 +315,36 @@ function fecharModal() {
 
 function copiarPix() {
   const botao = document.querySelector(".btn-pix");
+  const proximoPasso = document.getElementById("modal-proximo-passo");
 
   navigator.clipboard.writeText(CONFIG.pix)
     .then(() => {
       botao.innerText = "PIX Copiado ✔";
-      setTimeout(() => { botao.innerText = "Copiar PIX"; }, 2000);
+      botao.style.background = "#8b9b6e";
+      if (proximoPasso) proximoPasso.style.display = "block";
+
+      // Marca como reservado no localStorage
+      if (presenteSelecionado) {
+        const id = presenteSelecionado.dataset.id;
+        marcarReservado(id);
+      }
+
+      setTimeout(() => {
+        fecharModal();
+        botao.innerText = "Copiar PIX";
+        botao.style.background = "";
+        // Atualiza o card visualmente
+        if (presenteSelecionado) {
+          presenteSelecionado.classList.add("reservado");
+          const btn = presenteSelecionado.querySelector(".btn-presentear");
+          if (btn) { btn.innerText = "✓ Reservado"; btn.disabled = true; }
+        }
+      }, 2500);
     })
     .catch(() => {
-      // Fallback: exibe o PIX direto no botão para copiar manualmente
       botao.innerText = CONFIG.pix;
       botao.style.fontSize = "12px";
-      setTimeout(() => {
-        botao.innerText = "Copiar PIX";
-        botao.style.fontSize = "";
-      }, 4000);
+      setTimeout(() => { botao.innerText = "Copiar PIX"; botao.style.fontSize = ""; }, 4000);
     });
 }
 
@@ -216,6 +355,6 @@ function efeitoClique(event) {
   emoji.innerText = "💸";
   document.body.appendChild(emoji);
   emoji.style.left = event.clientX + "px";
-  emoji.style.top = event.clientY + "px";
+  emoji.style.top  = event.clientY + "px";
   setTimeout(() => emoji.remove(), 1000);
 }
