@@ -492,3 +492,185 @@ footer {
     height: 180px;
   }
 }
+
+/* ===== CERIMÔNIA ===== */
+
+.cerimonia-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: transparent;
+  backdrop-filter: none;
+  padding: 0 20px;
+  max-width: 700px;
+  margin: 30px auto 40px;
+}
+
+.info-card {
+  background: rgba(255,255,255,0.93);
+  backdrop-filter: blur(8px);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+}
+
+.info-card-header {
+  background: var(--cor-principal);
+  color: white;
+  padding: 12px 20px;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+}
+
+.info-card-body {
+  padding: 20px;
+}
+
+/* Info grid */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.info-full {
+  grid-column: 1 / -1;
+}
+
+.info-item {
+  background: #fdf3f4;
+  border-left: 3px solid var(--cor-principal);
+  border-radius: 0 10px 10px 0;
+  padding: 12px 14px;
+}
+
+.info-lbl {
+  font-size: 10px;
+  color: var(--cor-principal);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 3px;
+}
+
+.info-val {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Timeline */
+.timeline {
+  display: flex;
+  flex-direction: column;
+}
+
+.tl-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.tl-dot-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.tl-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--cor-principal);
+  margin-top: 3px;
+}
+
+.tl-dot-festa {
+  background: var(--cor-verde);
+}
+
+.tl-line {
+  width: 2px;
+  background: #f0d0d3;
+  flex: 1;
+  min-height: 22px;
+  margin: 4px 0;
+}
+
+.tl-content {
+  padding-bottom: 18px;
+}
+
+.tl-time {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--cor-principal);
+  margin-bottom: 2px;
+}
+
+.tl-time-festa {
+  color: var(--cor-verde);
+}
+
+.tl-desc {
+  font-size: 14px;
+  color: #444;
+}
+
+/* Botões de navegação */
+.local-endereco {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.btn-navegacao-row {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-waze,
+.btn-gmaps {
+  flex: 1;
+  display: inline-block;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  text-align: center;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.btn-waze {
+  background: #33ccff;
+  color: white;
+}
+
+.btn-gmaps {
+  background: #4285f4;
+  color: white;
+}
+
+.btn-waze:hover,
+.btn-gmaps:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 480px) {
+  .btn-navegacao-row {
+    flex-direction: column;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .info-full {
+    grid-column: 1;
+  }
+}
