@@ -61,6 +61,7 @@ const PRESENTES = [
   { id: "organizador",  nome: "Kit 4 Organizadores de Geladeira 3.8 Litros",                 preco: 76.00,    img: "imagens/organizador.jpg" },
   { id: "pote",         nome: "Kit 3 a 10 Potes Herméticos 2L Dispenser Organizador Lavanderia", preco: 100.00, img: "imagens/pote.jpg" },
   { id: "centro",       nome: "Kit 2 Mesas De Centro Madeira Design Orgânico Sala De Estar", preco: 285.00,   img: "imagens/centro.jpg" },
+  { id: "tv42",         nome: "Smartv 42 polegadas",                                          preco: 1500.00,   img: "imagens/tv42.jpg" },
 ];
 
 // ===== RENDER PRESENTES =====
