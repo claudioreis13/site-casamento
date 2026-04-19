@@ -2,18 +2,28 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Informações da Cerimônia 📍</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cerimônia — Bruna & Cláudio 📍</title>
 
+  <!-- SEO & Open Graph -->
+  <meta name="description" content="Informações da cerimônia de casamento de Bruna e Cláudio — 10/10/2026, 20h, Igreja Matriz de Nepomuceno/MG.">
+  <meta property="og:title" content="Cerimônia — Bruna & Cláudio 📍">
+  <meta property="og:description" content="10/10/2026 • 20h • Igreja Matriz, Nepomuceno - MG. Abra no Waze e não perca!">
+  <meta property="og:image" content="imagens/igreja.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+
+  <!-- Preload fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
 </head>
 <body class="cerimonia">
 
-<nav>
-  <a href="index.html">Início</a>
-  <a href="presentes.html">Presentes</a>
-  <a href="cerimonia.html" class="ativo">Cerimônia</a>
-</nav>
+<div id="nav-placeholder"></div>
 
 <section>
   <h2>Informações da Cerimônia 📍</h2>
@@ -27,14 +37,10 @@
   <a href="https://waze.com/ul?q=Igreja+Matriz+Nepomuceno+MG&navigate=yes" target="_blank" class="btn-waze">
     Abrir no Waze 🚗
   </a>
-
 </section>
 
-<footer>
-  <p>Bruna & Cláudio 💖</p>
-  <p>Obrigado por fazer parte desse momento especial</p>
-  <p>© 2026</p>
-</footer>
+<div id="footer-placeholder"></div>
 
+<script src="script.js"></script>
 </body>
 </html>

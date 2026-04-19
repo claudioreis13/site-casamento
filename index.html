@@ -2,20 +2,29 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Bruna & Cláudio 💍</title>
-  <link rel="stylesheet" href="style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bruna & Cláudio 💍</title>
 
+  <!-- SEO & Open Graph -->
+  <meta name="description" content="Site oficial do casamento de Bruna e Cláudio — 10 de outubro de 2026, Igreja Matriz de Nepomuceno/MG.">
+  <meta property="og:title" content="Bruna & Cláudio 💍 — 10/10/2026">
+  <meta property="og:description" content="Estamos muito felizes em compartilhar esse momento com você! Confira a lista de presentes e informações da cerimônia.">
+  <meta property="og:image" content="imagens/casamento.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+
+  <!-- Preload fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="fade">
+<body>
 
-<nav>
-  <a href="index.html" class="ativo">Início</a>
-  <a href="presentes.html">Presentes</a>
-  <a href="cerimonia.html">Cerimônia</a>
-</nav>
+<div id="nav-placeholder"></div>
 
 <!-- HERO -->
 <div class="hero">
@@ -29,7 +38,7 @@
   <h2>Bem-vindos 💕</h2>
   <p>Estamos muito felizes em compartilhar esse momento com você!</p>
 
-  <h2>Contagem regressiva 💍</h2>
+  <h2 style="margin-top:24px">Contagem regressiva 💍</h2>
 
   <div class="contador">
     <div class="tempo"><span id="dias">00</span><p>Dias</p></div>
@@ -39,13 +48,8 @@
   </div>
 </section>
 
-<footer>
-  <p>Bruna & Cláudio 💖</p>
-  <p>Obrigado por fazer parte desse momento especial</p>
-  <p>© 2026</p>
-</footer>
+<div id="footer-placeholder"></div>
 
 <script src="script.js"></script>
-
 </body>
 </html>

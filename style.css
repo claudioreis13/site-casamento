@@ -1,3 +1,10 @@
+/* ===== VARIÁVEIS ===== */
+:root {
+  --cor-principal: #c97b84;
+  --cor-principal-hover: rgba(201, 123, 132, 0.15);
+  --cor-verde: #8b9b6e;
+}
+
 /* RESET */
 * {
   margin: 0;
@@ -9,6 +16,12 @@
 /* BODY PADRÃO */
 body {
   background: url('imagens/casamento.jpg') center/cover no-repeat fixed;
+  opacity: 0;
+  animation: fadeIn 0.4s ease forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
 }
 
 /* OVERLAY */
@@ -40,19 +53,30 @@ nav {
   justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
 }
 
 nav a {
   text-decoration: none;
-  color: #c97b84;
+  color: var(--cor-principal);
   font-weight: 600;
   padding: 6px 12px;
   border-radius: 10px;
+  transition: all 0.2s ease;
 }
 
 nav a.ativo {
-  background: #c97b84;
+  background: var(--cor-principal);
   color: white;
+}
+
+nav a:hover {
+  background: var(--cor-principal-hover);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
 }
 
 /* HERO */
@@ -96,7 +120,7 @@ section {
 }
 
 .tempo {
-  background: #8b9b6e;
+  background: var(--cor-verde);
   color: white;
   padding: 20px;
   border-radius: 12px;
@@ -110,11 +134,57 @@ section {
 
 /* ===== PRESENTES ===== */
 
+/* Busca e filtro */
+.presentes-controles {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#busca-presente {
+  padding: 10px 16px;
+  border: 1.5px solid #ddd;
+  border-radius: 12px;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  outline: none;
+  width: 220px;
+  transition: border-color 0.2s;
+}
+
+#busca-presente:focus {
+  border-color: var(--cor-principal);
+}
+
+#filtro-preco {
+  padding: 10px 14px;
+  border: 1.5px solid #ddd;
+  border-radius: 12px;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  outline: none;
+  cursor: pointer;
+  background: white;
+  transition: border-color 0.2s;
+}
+
+#filtro-preco:focus {
+  border-color: var(--cor-principal);
+}
+
+#contador-resultados {
+  font-size: 13px;
+  color: #888;
+}
+
 .lista-presentes {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 25px;
-  margin-top: 25px;
+  margin-top: 10px;
 }
 
 .presente {
@@ -124,6 +194,30 @@ section {
   box-shadow: 0 4px 15px rgba(0,0,0,0.12);
   display: flex;
   flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.presente:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+/* Skeleton loader */
+.presente.skeleton img,
+.presente.skeleton h3,
+.presente.skeleton p,
+.presente.skeleton button {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: 8px;
+  color: transparent;
+  border: none;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
 
 .presente img {
@@ -146,7 +240,7 @@ section {
 
 .presente button {
   margin-top: auto;
-  background: #c97b84;
+  background: var(--cor-principal);
   color: white;
   border: none;
   padding: 12px;
@@ -157,6 +251,35 @@ section {
 
 .presente button:hover {
   transform: scale(1.05);
+}
+
+/* Estado reservado */
+.presente.reservado button {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.presente.reservado button:hover {
+  transform: none;
+}
+
+.badge-reservado {
+  display: inline-block;
+  background: #f0f0f0;
+  color: #888;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 99px;
+  margin-bottom: 6px;
+}
+
+/* Nenhum resultado */
+.sem-resultado {
+  grid-column: 1 / -1;
+  padding: 40px;
+  color: #888;
+  font-size: 15px;
 }
 
 /* ===== MODAL ===== */
@@ -171,6 +294,13 @@ section {
   display: none;
   justify-content: center;
   align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 999;
+}
+
+.modal.ativo {
+  opacity: 1;
 }
 
 .modal-conteudo {
@@ -181,6 +311,12 @@ section {
   width: 90%;
   max-width: 350px;
   position: relative;
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.modal.ativo .modal-conteudo {
+  transform: scale(1);
 }
 
 .fechar {
@@ -202,7 +338,7 @@ section {
   padding: 12px;
   border-radius: 12px;
   border: none;
-  background: #c97b84;
+  background: var(--cor-principal);
   color: white;
   cursor: pointer;
 }
@@ -214,12 +350,10 @@ section {
   padding: 12px;
   border-radius: 12px;
   text-decoration: none;
-
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-
   font-weight: 500;
 }
 
@@ -260,61 +394,6 @@ footer {
   color: white;
 }
 
-/* ===== RESPONSIVIDADE PROFISSIONAL ===== */
-
-/* TABLET */
-@media (max-width: 1024px) {
-  .lista-presentes {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* CELULAR */
-@media (max-width: 768px) {
-  .lista-presentes {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-  }
-
-  .presente img {
-    height: 160px;
-  }
-
-  .presente h3 {
-    font-size: 14px;
-  }
-
-  .presente p {
-    font-size: 14px;
-  }
-
-  .contador {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
-
-  nav a {
-    font-size: 14px;
-  }
-
-  section {
-    margin: 20px 10px;
-    padding: 20px;
-  }
-}
-
-/* CELULAR PEQUENO */
-@media (max-width: 480px) {
-  .lista-presentes {
-    grid-template-columns: 1fr;
-  }
-
-  .presente img {
-    height: 180px;
-  }
-}
-
 /* ===== BOTÕES PREMIUM ===== */
 
 .btn-pix {
@@ -342,47 +421,74 @@ footer {
 }
 
 .btn-fechar:hover {
-  color: #c97b84;
+  color: var(--cor-principal);
   transform: scale(1.05);
 }
 
-/* ===== AJUSTE SEGURO DAS IMAGENS (SÓ MOBILE) ===== */
+/* ===== RESPONSIVIDADE ===== */
+
+@media (max-width: 1024px) {
+  .lista-presentes {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
+  .lista-presentes {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
 
   .lista-presentes .presente img {
-    height: 180px;           /* mantém padrão */
-    object-fit: contain;     /* NÃO corta */
-    background: #fff;        /* evita espaços feios */
+    height: 160px;
+    object-fit: contain;
+    background: #fff;
     padding: 5px;
   }
 
+  .presente h3 {
+    font-size: 14px;
+  }
+
+  .presente p {
+    font-size: 14px;
+  }
+
+  .contador {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  nav a {
+    font-size: 14px;
+  }
+
+  section {
+    margin: 20px 10px;
+    padding: 20px;
+  }
+
+  #busca-presente {
+    width: 100%;
+  }
+
+  .presentes-controles {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #filtro-preco {
+    width: 100%;
+  }
 }
 
-.modal {
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
+@media (max-width: 480px) {
+  .lista-presentes {
+    grid-template-columns: 1fr;
+  }
 
-.modal.ativo {
-  opacity: 1;
-}
-
-.modal-conteudo {
-  transform: scale(0.9);
-  transition: transform 0.3s ease;
-}
-
-.modal.ativo .modal-conteudo {
-  transform: scale(1);
-}
-
-/* HOVER NAS ABAS DO MENU */
-nav a {
-  transition: all 0.2s ease;
-}
-
-nav a:hover {
-  background: rgba(201, 123, 132, 0.15);
-  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-  transform: translateY(-2px);
+  .lista-presentes .presente img {
+    height: 180px;
+  }
 }
