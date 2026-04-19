@@ -41,15 +41,15 @@
       <div class="info-grid">
         <div class="info-item">
           <div class="info-lbl">Data</div>
-          <div class="info-val">10/10/2026</div>
+          <div class="info-val" id="cer-data"></div>
         </div>
         <div class="info-item">
           <div class="info-lbl">Horário</div>
-          <div class="info-val">20h00</div>
+          <div class="info-val" id="cer-horario"></div>
         </div>
         <div class="info-item info-full">
           <div class="info-lbl">Local</div>
-          <div class="info-val">Igreja Matriz — Nepomuceno, MG</div>
+          <div class="info-val" id="cer-local"></div>
         </div>
       </div>
     </div>
@@ -67,7 +67,7 @@
             <div class="tl-line"></div>
           </div>
           <div class="tl-content">
-            <div class="tl-time">19h30</div>
+            <div class="tl-time" id="cer-hr-recepcao"></div>
             <div class="tl-desc">Recepção dos convidados</div>
           </div>
         </div>
@@ -78,7 +78,7 @@
             <div class="tl-line"></div>
           </div>
           <div class="tl-content">
-            <div class="tl-time">20h00</div>
+            <div class="tl-time" id="cer-hr-cerimonia"></div>
             <div class="tl-desc">Início da cerimônia</div>
           </div>
         </div>
@@ -88,7 +88,7 @@
             <div class="tl-dot tl-dot-festa"></div>
           </div>
           <div class="tl-content">
-            <div class="tl-time tl-time-festa">21h00</div>
+            <div class="tl-time tl-time-festa" id="cer-hr-festa"></div>
             <div class="tl-desc">Festa! 🎉</div>
           </div>
         </div>
@@ -101,12 +101,12 @@
   <div class="info-card">
     <div class="info-card-header">📍 Como chegar</div>
     <div class="info-card-body">
-      <p class="local-endereco">Praça da Matriz — Nepomuceno, MG</p>
+      <p class="local-endereco" id="cer-endereco"></p>
       <div class="btn-navegacao-row">
-        <a href="https://waze.com/ul?q=Igreja+Matriz+Nepomuceno+MG&navigate=yes" target="_blank" class="btn-waze">
+        <a href="#" id="btn-waze" target="_blank" class="btn-waze">
           🚗 Waze
         </a>
-        <a href="https://www.google.com/maps/search/Igreja+Matriz+Nepomuceno+MG" target="_blank" class="btn-gmaps">
+        <a href="#" id="btn-gmaps" target="_blank" class="btn-gmaps">
           🗺 Google Maps
         </a>
       </div>

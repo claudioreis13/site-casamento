@@ -1,6 +1,15 @@
 // ===== CONFIG CENTRAL =====
+// Edite aqui para atualizar todas as páginas automaticamente
 const CONFIG = {
   dataCasamento: new Date("2026-10-10T20:00:00"),
+  dataFormatada: "10 de Outubro de 2026",
+  horarioRecepcao: "19h30",
+  horarioCerimonia: "20h00",
+  horarioFesta: "21h00",
+  local: "Igreja Matriz — Nepomuceno, MG",
+  endereco: "Praça da Matriz — Nepomuceno, MG",
+  wazeUrl: "https://waze.com/ul?q=Igreja+Matriz+Nepomuceno+MG&navigate=yes",
+  gmapsUrl: "https://www.google.com/maps/search/Igreja+Matriz+Nepomuceno+MG",
   pix: "cr.reis@live.com",
   whatsapp: "https://wa.me/5535997167717?text=oii%20Bruna"
 };
@@ -32,6 +41,27 @@ document.addEventListener("DOMContentLoaded", () => {
   const footerEl = document.getElementById('footer-placeholder');
   if (navEl) navEl.outerHTML = renderNav();
   if (footerEl) footerEl.outerHTML = renderFooter();
+
+  // Injeta dados do casamento na página de cerimônia
+  const campos = {
+    'cer-data':             CONFIG.dataFormatada,
+    'cer-horario':          CONFIG.horarioCerimonia,
+    'cer-local':            CONFIG.local,
+    'cer-endereco':         CONFIG.endereco,
+    'cer-hr-recepcao':      CONFIG.horarioRecepcao,
+    'cer-hr-cerimonia':     CONFIG.horarioCerimonia,
+    'cer-hr-festa':         CONFIG.horarioFesta,
+  };
+  Object.entries(campos).forEach(([id, val]) => {
+    const el = document.getElementById(id);
+    if (el) el.innerText = val;
+  });
+
+  // Injeta URLs dos botões de navegação
+  const btnWaze  = document.getElementById('btn-waze');
+  const btnGmaps = document.getElementById('btn-gmaps');
+  if (btnWaze)  btnWaze.href  = CONFIG.wazeUrl;
+  if (btnGmaps) btnGmaps.href = CONFIG.gmapsUrl;
 
   // Botões de presentear
   const botoes = document.querySelectorAll(".btn-presentear");
