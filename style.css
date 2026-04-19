@@ -83,13 +83,13 @@ nav a:hover {
 .hero {
   text-align: center;
   color: white;
-  min-height: 70vh;
+  min-height: 50vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 40px 20px;
-  gap: 12px;
+  padding: 30px 20px 20px;
+  gap: 10px;
 }
 
 .hero h1 {
@@ -170,8 +170,8 @@ nav a:hover {
 section {
   background: rgba(255,255,255,0.9);
   backdrop-filter: blur(6px);
-  margin: 40px auto;
-  padding: 30px;
+  margin: 12px auto 40px;
+  padding: 28px 30px;
   max-width: 1200px;
   border-radius: 20px;
   text-align: center;
@@ -547,7 +547,7 @@ footer {
 
 @media (max-width: 768px) {
   .hero {
-    min-height: 85vh;
+    min-height: 55vh;
   }
 
   .hero h1 {
@@ -819,4 +819,9 @@ footer {
   .info-full {
     grid-column: 1;
   }
+}
+
+/* Section compacta — usada só no index */
+.section-inicio {
+  max-width: 680px;
 }
