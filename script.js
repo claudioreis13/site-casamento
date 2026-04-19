@@ -43,6 +43,10 @@ document.addEventListener("DOMContentLoaded", () => {
   if (footerEl) footerEl.outerHTML = renderFooter();
 
   // Injeta dados do casamento na página de cerimônia
+  // Preenche data contextual do contador
+  const dataLabel = document.getElementById('contador-data-label');
+  if (dataLabel) dataLabel.innerText = CONFIG.dataFormatada + ' • ' + CONFIG.horarioCerimonia;
+
   const campos = {
     'cer-data':             CONFIG.dataFormatada,
     'cer-horario':          CONFIG.horarioCerimonia,
