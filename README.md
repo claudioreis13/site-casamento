@@ -128,5 +128,3 @@ Testado e funcional nos navegadores modernos:
 Projeto pessoal — uso livre para fins não comerciais.
 
 ---
-
-<p align="center">Feito com 💖 para Bruna & Cláudio</p>
