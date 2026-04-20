@@ -1009,3 +1009,54 @@ footer {
 .section-cta-principal:hover {
   box-shadow: 0 6px 20px rgba(201, 123, 132, 0.45);
 }
+
+/* ===== LIGHTBOX ===== */
+.lightbox {
+  border: none;
+  background: rgba(0,0,0,0.92);
+  padding: 0;
+  max-width: 95vw;
+  max-height: 95vh;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.lightbox::backdrop {
+  background: rgba(0,0,0,0.75);
+}
+
+.lightbox img {
+  display: block;
+  max-width: 90vw;
+  max-height: 88vh;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.lightbox-fechar {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: white;
+  font-size: 22px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  transition: background 0.2s;
+}
+
+.lightbox-fechar:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+/* Cursor de lupa na imagem do modal */
+.modal-img-presente {
+  cursor: zoom-in;
+}

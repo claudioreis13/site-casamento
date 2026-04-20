@@ -295,6 +295,16 @@ function atualizarContador() {
   document.getElementById("minutos").innerText  = pad(minutos);
   document.getElementById("segundos").innerText = pad(segundos);
 
+  // Atualiza aria-labels para leitores de tela
+  const aD = document.getElementById("arco-item-dias");
+  const aH = document.getElementById("arco-item-horas");
+  const aM = document.getElementById("arco-item-minutos");
+  const aS = document.getElementById("arco-item-segundos");
+  if (aD) aD.setAttribute("aria-label", `${dias} dias`);
+  if (aH) aH.setAttribute("aria-label", `${horas} horas`);
+  if (aM) aM.setAttribute("aria-label", `${minutos} minutos`);
+  if (aS) aS.setAttribute("aria-label", `${segundos} segundos`);
+
   // Atualiza os arcos SVG
   setArco("arco-dias",     dias % 365, 365);
   setArco("arco-horas",    horas,       24);
@@ -355,6 +365,7 @@ function copiarPix() {
       botao.innerText = "PIX Copiado ✔";
       botao.style.background = "#8b9b6e";
       if (proximoPasso) proximoPasso.style.display = "block";
+      dispararConfete();
 
       // Marca como reservado no localStorage
       if (presenteSelecionado) {
@@ -390,4 +401,26 @@ function efeitoClique(event) {
   emoji.style.left = event.clientX + "px";
   emoji.style.top  = event.clientY + "px";
   setTimeout(() => emoji.remove(), 1000);
+}
+
+// ===== CONFETE =====
+function dispararConfete() {
+  if (typeof confetti === "undefined") return;
+  confetti({
+    particleCount: 80,
+    spread: 70,
+    origin: { y: 0.6 },
+    colors: ["#c97b84", "#f4c0d1", "#fff", "#8b9b6e", "#ffeaa7"]
+  });
+}
+
+// ===== LIGHTBOX =====
+function abrirLightbox() {
+  const modalImg = document.getElementById("modal-img");
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  if (!modalImg || !lightbox || !lightboxImg) return;
+  lightboxImg.src = modalImg.src;
+  lightboxImg.alt = modalImg.alt;
+  lightbox.showModal();
 }

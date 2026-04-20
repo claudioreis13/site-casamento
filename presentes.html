@@ -19,6 +19,9 @@
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bruna & Cláudio 💍 — 10/10/2026">
+
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💍</text></svg>">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -68,7 +71,7 @@
 
     <h2>💖 Obrigado pelo presente!</h2>
 
-    <img id="modal-img" src="" alt="" class="modal-img-presente">
+    <img id="modal-img" src="" alt="" class="modal-img-presente" onclick="abrirLightbox()" title="Clique para ampliar">
     <p class="modal-nome-presente" id="modal-nome"></p>
     <p id="modal-valor"></p>
 
@@ -96,7 +99,19 @@
   </div>
 </div>
 
+<!-- LIGHTBOX -->
+<dialog id="lightbox" class="lightbox" onclick="this.close()">
+  <img id="lightbox-img" src="" alt="">
+  <button class="lightbox-fechar" onclick="document.getElementById('lightbox').close()" aria-label="Fechar">×</button>
+</dialog>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 <script src="script.js"></script>
 
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js').catch(() => {});
+  }
+</script>
 </body>
 </html>
