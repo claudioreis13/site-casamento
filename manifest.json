@@ -1,0 +1,25 @@
+{
+  "name": "Casamento Bruna & Cláudio",
+  "short_name": "Bruna&Claudio",
+  "description": "Site oficial do casamento de Bruna e Cláudio - 10 de outubro de 2026",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#c97b84",
+  "theme_color": "#c97b84",
+  "orientation": "portrait",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "imagens/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "imagens/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
