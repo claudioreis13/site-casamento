@@ -61,7 +61,6 @@ const PRESENTES = [
   { id: "organizador",  nome: "Kit 4 Organizadores de Geladeira 3.8 Litros",                 preco: 76.00,    img: "imagens/organizador.jpg" },
   { id: "pote",         nome: "Kit 3 a 10 Potes Herméticos 2L Dispenser Organizador Lavanderia", preco: 100.00, img: "imagens/pote.jpg" },
   { id: "centro",       nome: "Kit 2 Mesas De Centro Madeira Design Orgânico Sala De Estar", preco: 285.00,   img: "imagens/centro.jpg" },
-  { id: "tv42",         nome: "Smartv 42 polegadas",                                          preco: 1500.00,   img: "imagens/tv42.jpg" },
 ];
 
 // ===== RENDER PRESENTES =====
@@ -247,27 +246,60 @@ document.addEventListener("DOMContentLoaded", () => {
 
   interceptarLinks();
   window.scrollTo(0, 0);
+
+  // Animação reveal ao entrar na viewport
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visivel');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 });
 
-// ===== CONTADOR =====
-function atualizarContador() {
-  const el = document.getElementById("dias");
+// ===== CONTADOR CIRCULAR =====
+const CIRC = 2 * Math.PI * 34; // circunferência r=34
+
+function setArco(id, valor, maximo) {
+  const el = document.getElementById(id);
   if (!el) return;
+  const progresso = Math.min(valor / maximo, 1);
+  el.setAttribute("stroke-dasharray", `${progresso * CIRC} ${CIRC}`);
+}
+
+function atualizarContador() {
+  const elDias = document.getElementById("dias");
+  if (!elDias) return;
 
   const agora = new Date();
   const diferenca = CONFIG.dataCasamento - agora;
 
   if (diferenca <= 0) {
-    document.querySelector(".contador").innerHTML =
-      "<p style='font-size:22px;font-weight:500'>Já casados! 🎉</p>";
+    const cont = document.querySelector(".contador-circular");
+    if (cont) cont.innerHTML = "<p style='font-size:22px;font-weight:500;color:#c97b84'>Já casados! 🎉</p>";
     return;
   }
 
   const pad = (n) => String(n).padStart(2, "0");
-  document.getElementById("dias").innerText     = pad(Math.floor(diferenca / (1000 * 60 * 60 * 24)));
-  document.getElementById("horas").innerText    = pad(Math.floor((diferenca / (1000 * 60 * 60)) % 24));
-  document.getElementById("minutos").innerText  = pad(Math.floor((diferenca / (1000 * 60)) % 60));
-  document.getElementById("segundos").innerText = pad(Math.floor((diferenca / 1000) % 60));
+
+  const dias    = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+  const horas   = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
+  const minutos = Math.floor((diferenca / (1000 * 60)) % 60);
+  const segundos= Math.floor((diferenca / 1000) % 60);
+
+  document.getElementById("dias").innerText     = pad(dias);
+  document.getElementById("horas").innerText    = pad(horas);
+  document.getElementById("minutos").innerText  = pad(minutos);
+  document.getElementById("segundos").innerText = pad(segundos);
+
+  // Atualiza os arcos SVG
+  setArco("arco-dias",     dias % 365, 365);
+  setArco("arco-horas",    horas,       24);
+  setArco("arco-minutos",  minutos,     60);
+  setArco("arco-segundos", segundos,    60);
 }
 
 setInterval(atualizarContador, 1000);

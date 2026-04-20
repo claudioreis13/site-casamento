@@ -31,29 +31,80 @@
 <div class="hero">
   <h1>Bruna & Cláudio</h1>
   <div class="hero-divisor"></div>
-  <h2>Depois de tanto esperar, chegou a hora de dizer sim. ✨</h2>
+  <h2>Depois de tanto esperar, chegou a hora de dizer sim.</h2>
 </div>
 
+
 <!-- CONTEÚDO -->
-<section class="section-inicio">
-  <h2>Bem-vindos 💕</h2>
-  <p>Estamos muito felizes em compartilhar esse momento especial com você!</p>
+<section class="section-inicio reveal">
 
-  <h2 style="margin-top:28px">Contagem regressiva ⏳</h2>
+  <p class="boas-vindas-texto">Estamos muito felizes em compartilhar esse momento especial com você 💕</p>
 
-  <div class="contador">
-    <div class="tempo"><span id="dias">00</span><p>Dias</p></div>
-    <div class="tempo"><span id="horas">00</span><p>Horas</p></div>
-    <div class="tempo"><span id="minutos">00</span><p>Minutos</p></div>
-    <div class="tempo"><span id="segundos">00</span><p>Segundos</p></div>
+  <h2 class="contador-titulo">Faltam</h2>
+
+  <div class="contador-circular">
+
+    <div class="arco-item">
+      <div class="arco-wrap">
+        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+          <circle class="arco-track" cx="40" cy="40" r="34"/>
+          <circle class="arco-prog" id="arco-dias" cx="40" cy="40" r="34"/>
+        </svg>
+        <div class="arco-inner">
+          <span class="arco-num" id="dias">00</span>
+        </div>
+      </div>
+      <span class="arco-lbl">Dias</span>
+    </div>
+
+    <div class="arco-item">
+      <div class="arco-wrap">
+        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+          <circle class="arco-track" cx="40" cy="40" r="34"/>
+          <circle class="arco-prog" id="arco-horas" cx="40" cy="40" r="34"/>
+        </svg>
+        <div class="arco-inner">
+          <span class="arco-num" id="horas">00</span>
+        </div>
+      </div>
+      <span class="arco-lbl">Horas</span>
+    </div>
+
+    <div class="arco-item">
+      <div class="arco-wrap">
+        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+          <circle class="arco-track" cx="40" cy="40" r="34"/>
+          <circle class="arco-prog" id="arco-minutos" cx="40" cy="40" r="34"/>
+        </svg>
+        <div class="arco-inner">
+          <span class="arco-num" id="minutos">00</span>
+        </div>
+      </div>
+      <span class="arco-lbl">Minutos</span>
+    </div>
+
+    <div class="arco-item">
+      <div class="arco-wrap">
+        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+          <circle class="arco-track" cx="40" cy="40" r="34"/>
+          <circle class="arco-prog" id="arco-segundos" cx="40" cy="40" r="34"/>
+        </svg>
+        <div class="arco-inner">
+          <span class="arco-num" id="segundos">00</span>
+        </div>
+      </div>
+      <span class="arco-lbl">Segundos</span>
+    </div>
+
   </div>
 
   <p class="contador-data" id="contador-data-label"></p>
 
   <div class="section-ctas">
-    <a href="cerimonia.html" class="section-cta section-cta-principal">💒 Ver informações da cerimônia</a>
-    <a href="presentes.html" class="section-cta section-cta-secundario">🎁 Escolher um presente</a>
+    <a href="cerimonia.html" class="section-cta section-cta-principal">Ver informações da cerimônia</a>
+    <a href="presentes.html" class="section-cta section-cta-secundario">Escolher um presente</a>
   </div>
+
 </section>
 
 <div id="footer-placeholder"></div>
