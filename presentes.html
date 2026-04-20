@@ -38,22 +38,46 @@
 
 <section>
 
-  <div class="presentes-controles" id="presentes-controles-sticky">
-    <input type="text" id="busca-presente" placeholder="🔍 Buscar presente...">
-    <select id="filtro-preco">
-      <option value="todos">Todos os preços</option>
-      <option value="ate200">Até R$ 200</option>
-      <option value="200a500">R$ 200 – R$ 500</option>
-      <option value="500a1000">R$ 500 – R$ 1.000</option>
-      <option value="acima1000">Acima de R$ 1.000</option>
-    </select>
-    <select id="ordenacao">
-      <option value="padrao">Ordenar por...</option>
-      <option value="menor">Menor preço</option>
-      <option value="maior">Maior preço</option>
-      <option value="az">A → Z</option>
-    </select>
-    <span id="contador-resultados"></span>
+  <!-- Barra de controles — colapsável no mobile -->
+  <div class="controles-barra" id="controles-barra">
+
+    <div class="controles-topo">
+      <div class="busca-wrap">
+        <span class="busca-icone">🔍</span>
+        <input type="text" id="busca-presente" placeholder="Buscar presente...">
+      </div>
+      <button class="btn-filtros-toggle" id="btn-filtros-toggle" onclick="toggleFiltros()" aria-expanded="false">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="4" y1="6" x2="20" y2="6"/>
+          <line x1="7" y1="12" x2="17" y2="12"/>
+          <line x1="10" y1="18" x2="14" y2="18"/>
+        </svg>
+        Filtrar
+        <span class="filtro-badge" id="filtro-badge" style="display:none">1</span>
+      </button>
+    </div>
+
+    <div class="controles-painel" id="controles-painel">
+      <select id="filtro-preco">
+        <option value="todos">Todos os preços</option>
+        <option value="ate200">Até R$ 200</option>
+        <option value="200a500">R$ 200 – R$ 500</option>
+        <option value="500a1000">R$ 500 – R$ 1.000</option>
+        <option value="acima1000">Acima de R$ 1.000</option>
+      </select>
+      <select id="ordenacao">
+        <option value="padrao">Ordenar por...</option>
+        <option value="menor">Menor preço</option>
+        <option value="maior">Maior preço</option>
+        <option value="az">A → Z</option>
+      </select>
+      <button class="btn-limpar" id="btn-limpar" style="display:none" onclick="limparFiltros()">✕ Limpar</button>
+    </div>
+
+    <div class="controles-rodape">
+      <span id="contador-resultados"></span>
+    </div>
+
   </div>
 
   <!-- Cards gerados pelo JS a partir do array PRESENTES -->

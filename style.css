@@ -297,32 +297,107 @@ section {
 
 /* ===== PRESENTES ===== */
 
-/* Busca e filtro */
-.presentes-controles {
+/* Barra de controles */
+.controles-barra {
+  position: sticky;
+  top: 52px;
+  z-index: 90;
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(8px);
+  padding: 10px 0 8px;
+  margin-bottom: 12px;
+  border-bottom: 0.5px solid rgba(0,0,0,0.07);
+}
+
+.controles-topo {
   display: flex;
-  gap: 12px;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
+  gap: 10px;
   align-items: center;
 }
 
+.busca-wrap {
+  flex: 1;
+  position: relative;
+}
+
+.busca-icone {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  pointer-events: none;
+}
+
 #busca-presente {
-  padding: 10px 16px;
+  width: 100%;
+  padding: 10px 16px 10px 36px;
   border: 1.5px solid #ddd;
   border-radius: 12px;
-  font-size: 14px;
+  font-size: 15px;
   font-family: 'Poppins', sans-serif;
   outline: none;
-  width: 220px;
   transition: border-color 0.2s;
+  -webkit-appearance: none;
 }
 
 #busca-presente:focus {
   border-color: var(--cor-principal);
 }
 
-#filtro-preco {
+.btn-filtros-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  border: 1.5px solid #ddd;
+  border-radius: 12px;
+  background: white;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: #555;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.btn-filtros-toggle.ativo {
+  border-color: var(--cor-principal);
+  color: var(--cor-principal);
+  background: rgba(201,123,132,0.06);
+}
+
+.filtro-badge {
+  background: var(--cor-principal);
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Painel colapsável de filtros */
+.controles-painel {
+  display: none;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.controles-painel.aberto {
+  display: flex;
+}
+
+#filtro-preco,
+#ordenacao {
+  flex: 1;
+  min-width: 140px;
   padding: 10px 14px;
   border: 1.5px solid #ddd;
   border-radius: 12px;
@@ -332,15 +407,44 @@ section {
   cursor: pointer;
   background: white;
   transition: border-color 0.2s;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 32px;
 }
 
-#filtro-preco:focus {
+#filtro-preco:focus,
+#ordenacao:focus {
   border-color: var(--cor-principal);
 }
 
-#contador-resultados {
-  font-size: 13px;
+.btn-limpar {
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: 1.5px solid #ddd;
+  background: white;
   color: #888;
+  font-size: 13px;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.btn-limpar:hover {
+  border-color: var(--cor-principal);
+  color: var(--cor-principal);
+}
+
+.controles-rodape {
+  margin-top: 6px;
+  min-height: 18px;
+}
+
+#contador-resultados {
+  font-size: 12px;
+  color: #aaa;
 }
 
 .lista-presentes {
@@ -660,17 +764,10 @@ footer {
     padding: 20px;
   }
 
-  #busca-presente {
-    width: 100%;
-  }
-
-  .presentes-controles {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  #filtro-preco {
-    width: 100%;
+  /* Controles mobile já são responsivos por padrão */
+  #filtro-preco,
+  #ordenacao {
+    flex: 1 1 100%;
   }
 }
 
@@ -1059,4 +1156,225 @@ footer {
 /* Cursor de lupa na imagem do modal */
 .modal-img-presente {
   cursor: zoom-in;
+}
+
+/* ===== MOBILE FIRST — MELHORIAS GERAIS ===== */
+
+/* Grid de presentes: 2 colunas no mobile por padrão */
+@media (max-width: 600px) {
+  /* Section sem padding lateral excessivo */
+  section {
+    margin: 12px 8px 30px;
+    padding: 16px 12px;
+    border-radius: 16px;
+  }
+
+  /* Presentes: 2 colunas compactas */
+  .lista-presentes {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .presente {
+    padding: 10px;
+    border-radius: 14px;
+  }
+
+  .presente img {
+    height: 130px;
+    object-fit: cover;
+  }
+
+  .presente h3 {
+    font-size: 12px;
+    min-height: 2.4em;
+    margin: 8px 0 4px;
+  }
+
+  .presente p {
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+
+  .presente button {
+    padding: 10px;
+    font-size: 13px;
+    border-radius: 10px;
+  }
+
+  /* Badge humor menor */
+  .badge-humor {
+    font-size: 9px;
+    padding: 2px 6px;
+  }
+
+  /* Modal fullscreen no mobile */
+  .modal-conteudo {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 20px 20px 0 0;
+    padding: 20px 16px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-height: 92vh;
+    overflow-y: auto;
+  }
+
+  .modal {
+    align-items: flex-end;
+  }
+
+  /* Botão fechar maior no mobile */
+  .fechar {
+    font-size: 24px;
+    padding: 12px 16px;
+  }
+
+  /* CTAs da section em coluna */
+  .section-ctas {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .section-cta {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 20px;
+    font-size: 14px;
+  }
+
+  /* Hero menor no mobile */
+  .hero {
+    min-height: 42vh;
+    padding: 30px 16px 20px;
+  }
+
+  .hero h1 {
+    font-size: 46px;
+  }
+
+  .hero h2 {
+    font-size: 16px;
+  }
+
+  /* Contador menor */
+  .arco-wrap,
+  .arco-wrap svg {
+    width: 68px;
+    height: 68px;
+  }
+
+  .arco-num {
+    font-size: 18px;
+  }
+
+  .arco-lbl {
+    font-size: 10px;
+  }
+
+  .contador-circular {
+    gap: 10px;
+  }
+
+  /* Nav compacto */
+  nav {
+    padding: 10px;
+    gap: 8px;
+  }
+
+  nav a {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+
+  /* Cerimônia cards */
+  .cerimonia-section {
+    padding: 0 8px;
+    margin: 16px auto 30px;
+  }
+
+  /* Botões de navegação lado a lado */
+  .btn-navegacao-row {
+    flex-direction: row;
+  }
+}
+
+/* Telas muito pequenas (iPhone SE, etc) */
+@media (max-width: 380px) {
+  .lista-presentes {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .presente img {
+    height: 110px;
+  }
+
+  .presente h3 {
+    font-size: 11px;
+  }
+
+  nav a {
+    font-size: 12px;
+    padding: 5px 8px;
+  }
+}
+
+/* Desktop: painel de filtros sempre visível */
+@media (min-width: 601px) {
+  .controles-painel {
+    display: flex !important;
+  }
+
+  .btn-filtros-toggle {
+    display: none;
+  }
+
+  .controles-topo {
+    flex-wrap: wrap;
+  }
+
+  #busca-presente {
+    width: 220px;
+    flex: none;
+  }
+
+  .controles-barra {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .controles-topo,
+  .controles-painel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .controles-painel {
+    margin-top: 0;
+  }
+
+  .controles-barra {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 0 12px;
+  }
+
+  .controles-topo,
+  .controles-painel {
+    flex: none;
+  }
+
+  .controles-rodape {
+    width: 100%;
+    text-align: center;
+    margin-top: 4px;
+  }
 }

@@ -155,6 +155,39 @@ function aplicarFiltros() {
   }
 }
 
+// ===== CONTROLES MOBILE =====
+function toggleFiltros() {
+  const painel = document.getElementById("controles-painel");
+  const btn = document.getElementById("btn-filtros-toggle");
+  if (!painel || !btn) return;
+  const aberto = painel.classList.toggle("aberto");
+  btn.classList.toggle("ativo", aberto);
+  btn.setAttribute("aria-expanded", aberto);
+}
+
+function limparFiltros() {
+  estadoAtual.termo = "";
+  estadoAtual.faixa = "todos";
+  const busca = document.getElementById("busca-presente");
+  const filtro = document.getElementById("filtro-preco");
+  if (busca) busca.value = "";
+  if (filtro) filtro.value = "todos";
+  atualizarBadgeFiltro();
+  aplicarFiltros();
+}
+
+function atualizarBadgeFiltro() {
+  const badge = document.getElementById("filtro-badge");
+  const btnLimpar = document.getElementById("btn-limpar");
+  const ativo = estadoAtual.faixa !== "todos" || estadoAtual.termo;
+  const count = (estadoAtual.faixa !== "todos" ? 1 : 0) + (estadoAtual.termo ? 1 : 0);
+  if (badge) {
+    badge.style.display = count > 0 ? "inline-flex" : "none";
+    badge.innerText = count;
+  }
+  if (btnLimpar) btnLimpar.style.display = ativo ? "inline-block" : "none";
+}
+
 // ===== NAV & FOOTER DINÂMICOS =====
 function renderNav() {
   const pagina = window.location.pathname.split('/').pop() || 'index.html';
@@ -232,8 +265,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const filtro = document.getElementById("filtro-preco");
     const ordem  = document.getElementById("ordenacao");
 
-    if (busca)  busca.addEventListener("input",  () => { estadoAtual.termo = busca.value.toLowerCase(); aplicarFiltros(); });
-    if (filtro) filtro.addEventListener("change", () => { estadoAtual.faixa = filtro.value; aplicarFiltros(); });
+    if (busca)  busca.addEventListener("input",  () => { estadoAtual.termo = busca.value.toLowerCase(); atualizarBadgeFiltro(); aplicarFiltros(); });
+    if (filtro) filtro.addEventListener("change", () => { estadoAtual.faixa = filtro.value; atualizarBadgeFiltro(); aplicarFiltros(); });
     if (ordem)  ordem.addEventListener("change",  () => { estadoAtual.ordem = ordem.value; aplicarFiltros(); });
   }
 
