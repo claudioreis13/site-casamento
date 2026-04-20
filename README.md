@@ -1,4 +1,4 @@
-# 💍 Bruna & Cláudio — Site de Casamento
+# Site de Casamento
 
 Site oficial do meu casamento, desenvolvido em HTML, CSS e JavaScript puro — sem frameworks, sem dependências externas, sem servidor.
 
