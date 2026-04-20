@@ -1,7 +1,7 @@
 // ===== CONFIG CENTRAL =====
 // Edite aqui para atualizar todas as páginas automaticamente
 const CONFIG = {
-  dataCasamento: new Date("2026-10-10T23:00:00Z"), // 20h em UTC-3 (Brasília)
+  dataCasamento: new Date("2026-10-10T20:00:00"),
   dataFormatada: "10 de Outubro de 2026",
   horarioRecepcao: "19h30",
   horarioCerimonia: "20h00",
@@ -63,46 +63,7 @@ const PRESENTES = [
   { id: "centro",       nome: "Kit 2 Mesas De Centro Madeira Design Orgânico Sala De Estar", preco: 285.00,   img: "imagens/centro.jpg" },
 ];
 
-// ===== TOAST NOTIFICATION =====
-function showToast(message, type = 'info') {
-  const existing = document.querySelector('.toast');
-  if (existing) existing.remove();
-  
-  const toast = document.createElement('div');
-  toast.className = `toast ${type}`;
-  toast.textContent = message;
-  document.body.appendChild(toast);
-  
-  setTimeout(() => toast.classList.add('show'), 10);
-  setTimeout(() => {
-    toast.classList.remove('show');
-    setTimeout(() => toast.remove(), 300);
-  }, 2500);
-}
-
-// ===== DEBOUNCE =====
-function debounce(fn, delay = 500) {
-  let timer;
-  return function(...args) {
-    clearTimeout(timer);
-    timer = setTimeout(() => fn.apply(this, args), delay);
-  };
-}
-
-// ===== RENDER PRESENTES COM SKELETON =====
-function showSkeleton() {
-  const container = document.querySelector('.lista-presentes');
-  if (!container) return;
-  container.innerHTML = Array(8).fill(0).map(() => `
-    <div class="presente skeleton">
-      <div style="height:180px; background:#e0e0e0; border-radius:12px;"></div>
-      <div style="height:16px; width:80%; margin:12px 0 6px; background:#e0e0e0; border-radius:4px;"></div>
-      <div style="height:14px; width:40%; background:#e0e0e0; border-radius:4px;"></div>
-      <div style="height:36px; margin-top:8px; background:#e0e0e0; border-radius:8px;"></div>
-    </div>
-  `).join('');
-}
-
+// ===== RENDER PRESENTES =====
 function formatarPreco(preco) {
   return preco.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 }
@@ -129,7 +90,7 @@ function renderPresentes(lista) {
     return `
     <div class="presente${estaReservado ? " reservado" : ""}" data-id="${p.id}" data-preco="${p.preco}">
       ${p.humor ? '<span class="badge-humor">😄 Surpresa</span>' : ''}
-      <img src="${p.img}" alt="${p.nome}" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect width=%22100%22 height=%22100%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%22 y=%2255%22 text-anchor=%22middle%22 fill=%22%23999%22 font-size=%2212%22%3E📷%3C/text%3E%3C/svg%3E'">
+      <img src="${p.img}" alt="${p.nome}" loading="lazy">
       <h3 title="${p.nome}">${p.nome}</h3>
       <p>${formatarPreco(p.preco)}</p>
       <button class="btn-presentear"${estaReservado ? " disabled" : ""}>
@@ -138,14 +99,15 @@ function renderPresentes(lista) {
     </div>`;
   }).join("");
 
+  // Atualiza contador
   atualizarContadorResultados(lista.length);
 
-  // Rebind event listeners com debounce
+  // Rebind event listeners
   container.querySelectorAll(".btn-presentear:not([disabled])").forEach(botao => {
-    botao.addEventListener("click", debounce((event) => {
+    botao.addEventListener("click", (event) => {
       efeitoClique(event);
       comprar(botao);
-    }, 300));
+    });
   });
 }
 
@@ -155,24 +117,29 @@ function atualizarContadorResultados(n) {
 }
 
 // ===== FILTRO + BUSCA + ORDENAÇÃO =====
-let estadoAtual = { termo: "", faixa: "todos", ordem: "az" }; // padrão alfabético
+let estadoAtual = { termo: "", faixa: "todos", ordem: "padrao" };
 
 function aplicarFiltros() {
   let lista = [...PRESENTES];
   const { termo, faixa, ordem } = estadoAtual;
 
+  // Busca
   if (termo) lista = lista.filter(p => p.nome.toLowerCase().includes(termo));
+
+  // Faixa de preço
   if (faixa === "ate200")    lista = lista.filter(p => p.preco <= 200);
   if (faixa === "200a500")   lista = lista.filter(p => p.preco > 200  && p.preco <= 500);
   if (faixa === "500a1000")  lista = lista.filter(p => p.preco > 500  && p.preco <= 1000);
   if (faixa === "acima1000") lista = lista.filter(p => p.preco > 1000);
-  
+
+  // Ordenação
   if (ordem === "menor") lista.sort((a, b) => a.preco - b.preco);
   if (ordem === "maior") lista.sort((a, b) => b.preco - a.preco);
   if (ordem === "az")    lista.sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR"));
 
   renderPresentes(lista);
 
+  // Mensagem de nenhum resultado
   const container = document.querySelector(".lista-presentes");
   const semResultado = document.getElementById("sem-resultado");
   if (lista.length === 0) {
@@ -207,7 +174,6 @@ function limparFiltros() {
   if (filtro) filtro.value = "todos";
   atualizarBadgeFiltro();
   aplicarFiltros();
-  showToast("Filtros limpos ✨", "info");
 }
 
 function atualizarBadgeFiltro() {
@@ -220,48 +186,6 @@ function atualizarBadgeFiltro() {
     badge.innerText = count;
   }
   if (btnLimpar) btnLimpar.style.display = ativo ? "inline-block" : "none";
-}
-
-// ===== SWIPE NAVIGATION =====
-let touchStartX = 0;
-let touchEndX = 0;
-
-function initSwipeNavigation() {
-  document.addEventListener('touchstart', e => {
-    touchStartX = e.changedTouches[0].screenX;
-  }, { passive: true });
-
-  document.addEventListener('touchend', e => {
-    touchEndX = e.changedTouches[0].screenX;
-    const diff = touchEndX - touchStartX;
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    
-    if (Math.abs(diff) > 80) {
-      if (diff > 0) { // swipe right → voltar
-        if (currentPage === 'presentes.html') navegarCom('index.html');
-        else if (currentPage === 'cerimonia.html') navegarCom('presentes.html');
-      } else { // swipe left → avançar
-        if (currentPage === 'index.html') navegarCom('presentes.html');
-        else if (currentPage === 'presentes.html') navegarCom('cerimonia.html');
-      }
-    }
-  });
-}
-
-// ===== SHARE BUTTON =====
-function initShareButton() {
-  const shareBtn = document.getElementById('btn-share');
-  if (shareBtn && navigator.share) {
-    shareBtn.addEventListener('click', () => {
-      navigator.share({
-        title: 'Bruna & Cláudio - Casamento',
-        text: 'Venha celebrar conosco! 10/10/2026 em Nepomuceno/MG',
-        url: window.location.href
-      }).catch(() => {});
-    });
-  } else if (shareBtn) {
-    shareBtn.style.display = 'none';
-  }
 }
 
 // ===== NAV & FOOTER DINÂMICOS =====
@@ -302,16 +226,17 @@ function renderFooter() {
   </footer>`;
 }
 
-// ===== DOM CONTENT LOADED =====
 document.addEventListener("DOMContentLoaded", () => {
   const navEl = document.getElementById('nav-placeholder');
   const footerEl = document.getElementById('footer-placeholder');
   if (navEl) navEl.outerHTML = renderNav();
   if (footerEl) footerEl.outerHTML = renderFooter();
 
+  // Data contextual do contador
   const dataLabel = document.getElementById('contador-data-label');
   if (dataLabel) dataLabel.innerText = CONFIG.dataFormatada + ' • ' + CONFIG.horarioCerimonia;
 
+  // Dados da cerimônia
   const campos = {
     'cer-data':         CONFIG.dataFormatada,
     'cer-horario':      CONFIG.horarioCerimonia,
@@ -331,37 +256,21 @@ document.addEventListener("DOMContentLoaded", () => {
   if (btnWaze)  btnWaze.href  = CONFIG.wazeUrl;
   if (btnGmaps) btnGmaps.href = CONFIG.gmapsUrl;
 
+  // Renderiza presentes a partir do array
   if (document.querySelector(".lista-presentes")) {
-    showSkeleton();
-    setTimeout(() => {
-      renderPresentes(PRESENTES);
-    }, 100);
+    renderPresentes(PRESENTES);
 
+    // Controles
     const busca  = document.getElementById("busca-presente");
     const filtro = document.getElementById("filtro-preco");
     const ordem  = document.getElementById("ordenacao");
 
-    if (busca) {
-      busca.addEventListener("input", () => { 
-        estadoAtual.termo = busca.value.toLowerCase(); 
-        atualizarBadgeFiltro(); 
-        aplicarFiltros(); 
-      });
-      busca.addEventListener("keypress", (e) => {
-        if (e.key === "Enter") e.preventDefault();
-      });
-    }
-    if (filtro) filtro.addEventListener("change", () => { 
-      estadoAtual.faixa = filtro.value; 
-      atualizarBadgeFiltro(); 
-      aplicarFiltros(); 
-    });
-    if (ordem) ordem.addEventListener("change", () => { 
-      estadoAtual.ordem = ordem.value; 
-      aplicarFiltros(); 
-    });
+    if (busca)  busca.addEventListener("input",  () => { estadoAtual.termo = busca.value.toLowerCase(); atualizarBadgeFiltro(); aplicarFiltros(); });
+    if (filtro) filtro.addEventListener("change", () => { estadoAtual.faixa = filtro.value; atualizarBadgeFiltro(); aplicarFiltros(); });
+    if (ordem)  ordem.addEventListener("change",  () => { estadoAtual.ordem = ordem.value; aplicarFiltros(); });
   }
 
+  // Modal
   const modal = document.getElementById("modal");
   if (modal) {
     modal.addEventListener("click", (e) => { if (e.target === modal) fecharModal(); });
@@ -371,6 +280,7 @@ document.addEventListener("DOMContentLoaded", () => {
   interceptarLinks();
   window.scrollTo(0, 0);
 
+  // Animação reveal ao entrar na viewport
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -381,13 +291,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }, { threshold: 0.1 });
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-  
-  initSwipeNavigation();
-  initShareButton();
 });
 
 // ===== CONTADOR CIRCULAR =====
-const CIRC = 2 * Math.PI * 34;
+const CIRC = 2 * Math.PI * 34; // circunferência r=34
 
 function setArco(id, valor, maximo) {
   const el = document.getElementById(id);
@@ -410,6 +317,7 @@ function atualizarContador() {
   }
 
   const pad = (n) => String(n).padStart(2, "0");
+
   const dias    = Math.floor(diferenca / (1000 * 60 * 60 * 24));
   const horas   = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
   const minutos = Math.floor((diferenca / (1000 * 60)) % 60);
@@ -420,6 +328,7 @@ function atualizarContador() {
   document.getElementById("minutos").innerText  = pad(minutos);
   document.getElementById("segundos").innerText = pad(segundos);
 
+  // Atualiza aria-labels para leitores de tela
   const aD = document.getElementById("arco-item-dias");
   const aH = document.getElementById("arco-item-horas");
   const aM = document.getElementById("arco-item-minutos");
@@ -429,6 +338,7 @@ function atualizarContador() {
   if (aM) aM.setAttribute("aria-label", `${minutos} minutos`);
   if (aS) aS.setAttribute("aria-label", `${segundos} segundos`);
 
+  // Atualiza os arcos SVG
   setArco("arco-dias",     dias % 365, 365);
   setArco("arco-horas",    horas,       24);
   setArco("arco-minutos",  minutos,     60);
@@ -449,16 +359,19 @@ function comprar(botao) {
 
   presenteSelecionado = card;
 
+  // Preenche modal
   document.getElementById("modal-img").src         = presente.img;
   document.getElementById("modal-img").alt         = presente.nome;
   document.getElementById("modal-nome").innerText  = presente.nome;
   document.getElementById("modal-valor").innerText = formatarPreco(presente.preco);
   document.getElementById("modal-pix").innerText   = CONFIG.pix;
 
+  // WhatsApp com nome do presente
   const msg = encodeURIComponent("Oii Bruna! Quero presentear vocês com: " + presente.nome);
   const btnWpp = document.getElementById("btn-whatsapp-modal");
   if (btnWpp) btnWpp.href = "https://wa.me/5535997167717?text=" + msg;
 
+  // Reseta estado
   const btnPix = document.querySelector(".btn-pix");
   if (btnPix) { btnPix.innerText = "Copiar PIX"; btnPix.style.background = ""; }
   const proximoPasso = document.getElementById("modal-proximo-passo");
@@ -486,8 +399,8 @@ function copiarPix() {
       botao.style.background = "#8b9b6e";
       if (proximoPasso) proximoPasso.style.display = "block";
       dispararConfete();
-      showToast("PIX copiado! Finalize o pagamento 💖", "success");
 
+      // Marca como reservado no localStorage
       if (presenteSelecionado) {
         const id = presenteSelecionado.dataset.id;
         marcarReservado(id);
@@ -497,6 +410,7 @@ function copiarPix() {
         fecharModal();
         botao.innerText = "Copiar PIX";
         botao.style.background = "";
+        // Atualiza o card visualmente
         if (presenteSelecionado) {
           presenteSelecionado.classList.add("reservado");
           const btn = presenteSelecionado.querySelector(".btn-presentear");
@@ -507,11 +421,11 @@ function copiarPix() {
     .catch(() => {
       botao.innerText = CONFIG.pix;
       botao.style.fontSize = "12px";
-      showToast("Não foi possível copiar, tente novamente", "error");
       setTimeout(() => { botao.innerText = "Copiar PIX"; botao.style.fontSize = ""; }, 4000);
     });
 }
 
+// ===== ANIMAÇÃO DINHEIRO =====
 function efeitoClique(event) {
   const emoji = document.createElement("div");
   emoji.classList.add("efeito-dinheiro");
@@ -522,6 +436,7 @@ function efeitoClique(event) {
   setTimeout(() => emoji.remove(), 1000);
 }
 
+// ===== CONFETE =====
 function dispararConfete() {
   if (typeof confetti === "undefined") return;
   confetti({
@@ -532,6 +447,7 @@ function dispararConfete() {
   });
 }
 
+// ===== LIGHTBOX =====
 function abrirLightbox() {
   const modalImg = document.getElementById("modal-img");
   const lightbox = document.getElementById("lightbox");
@@ -541,10 +457,3 @@ function abrirLightbox() {
   lightboxImg.alt = modalImg.alt;
   lightbox.showModal();
 }
-
-// Expor funções globais necessárias para onclick no HTML
-window.toggleFiltros = toggleFiltros;
-window.limparFiltros = limparFiltros;
-window.abrirLightbox = abrirLightbox;
-window.copiarPix = copiarPix;
-window.fecharModal = fecharModal;
