@@ -1,8 +1,12 @@
 /* ===== VARIÁVEIS ===== */
 :root {
-  --cor-principal: #c97b84;
-  --cor-principal-hover: rgba(201, 123, 132, 0.15);
-  --cor-verde: #8b9b6e;
+  --cor-principal: #6B7A4E;
+  --cor-principal-hover: rgba(107, 122, 78, 0.15);
+  --cor-sage: #B9CCAE;
+  --cor-sage-claro: #D4DECE;
+  --cor-cinza: #A1A1A0;
+  --cor-branco-quente: #F5F5F0;
+  --cor-verde: #6B7A4E;
 }
 
 /* RESET */
@@ -35,7 +39,7 @@ body::before {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.4);
+  background: rgba(20,30,15,0.45);
   top: 0;
   left: 0;
   z-index: -1;
@@ -47,12 +51,12 @@ body.cerimonia {
 }
 
 body.cerimonia::before {
-  background: rgba(0,0,0,0.4);
+  background: rgba(20,30,15,0.45);
 }
 
 /* NAV */
 nav {
-  background: rgba(255,255,255,0.9);
+  background: rgba(245,245,240,0.95);
   padding: 12px;
   display: flex;
   justify-content: center;
@@ -175,7 +179,7 @@ nav a:hover {
 
 /* SECTION */
 section {
-  background: rgba(255,255,255,0.9);
+  background: rgba(245,245,240,0.93);
   backdrop-filter: blur(6px);
   margin: 16px auto 40px;
   padding: 36px 30px 30px;
@@ -214,7 +218,7 @@ section {
 
 .arco-track {
   fill: none;
-  stroke: rgba(201, 123, 132, 0.15);
+  stroke: var(--cor-sage-claro);
   stroke-width: 4;
 }
 
@@ -290,7 +294,7 @@ section {
 }
 
 .section-cta-secundario {
-  background: white;
+  background: var(--cor-branco-quente);
   color: var(--cor-principal);
   border: 1.5px solid var(--cor-principal);
 }
@@ -366,7 +370,7 @@ section {
 .btn-filtros-toggle.ativo {
   border-color: var(--cor-principal);
   color: var(--cor-principal);
-  background: rgba(201,123,132,0.06);
+  background: rgba(107,122,78,0.06);
 }
 
 .filtro-badge {
@@ -405,7 +409,7 @@ section {
   font-family: 'Poppins', sans-serif;
   outline: none;
   cursor: pointer;
-  background: white;
+  background: var(--cor-branco-quente);
   transition: border-color 0.2s;
   -webkit-appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
@@ -455,7 +459,7 @@ section {
 }
 
 .presente {
-  background: #fff;
+  background: var(--cor-branco-quente);
   padding: 14px;
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -523,7 +527,8 @@ section {
 
 /* Estado reservado */
 .presente.reservado button {
-  background: #ccc;
+  background: var(--cor-sage);
+  color: white;
   cursor: not-allowed;
   transform: none;
 }
@@ -572,7 +577,7 @@ section {
 }
 
 .modal-conteudo {
-  background: white;
+  background: var(--cor-branco-quente);
   padding: 22px;
   border-radius: 15px;
   text-align: center;
@@ -1045,7 +1050,7 @@ footer {
 }
 
 .info-card {
-  background: rgba(255,255,255,0.93);
+  background: rgba(245,245,240,0.95);
   backdrop-filter: blur(8px);
   border-radius: 18px;
   overflow: hidden;
@@ -1077,7 +1082,8 @@ footer {
 }
 
 .info-item {
-  background: #fdf3f4;
+  background: var(--cor-sage-claro);
+  opacity: 0.9;
   border-left: 3px solid var(--cor-principal);
   border-radius: 0 10px 10px 0;
   padding: 12px 14px;
@@ -1126,12 +1132,12 @@ footer {
 }
 
 .tl-dot-festa {
-  background: var(--cor-verde);
+  background: var(--cor-principal);
 }
 
 .tl-line {
   width: 2px;
-  background: #f0d0d3;
+  background: var(--cor-sage);
   flex: 1;
   min-height: 22px;
   margin: 4px 0;
@@ -1149,7 +1155,7 @@ footer {
 }
 
 .tl-time-festa {
-  color: var(--cor-verde);
+  color: var(--cor-principal);
 }
 
 .tl-desc {
@@ -1269,8 +1275,8 @@ footer {
   position: absolute;
   top: 10px;
   left: 10px;
-  background: rgba(255, 220, 100, 0.92);
-  color: #7a5800;
+  background: rgba(185, 204, 174, 0.92);
+  color: #3d5230;
   font-size: 10px;
   font-weight: 700;
   padding: 3px 8px;
@@ -1325,11 +1331,11 @@ footer {
 }
 
 .section-cta-principal {
-  box-shadow: 0 4px 14px rgba(201, 123, 132, 0.35);
+  box-shadow: 0 4px 14px rgba(107, 122, 78, 0.35);
 }
 
 .section-cta-principal:hover {
-  box-shadow: 0 6px 20px rgba(201, 123, 132, 0.45);
+  box-shadow: 0 6px 20px rgba(107, 122, 78, 0.45);
 }
 
 /* ===== LIGHTBOX ===== */
@@ -1376,4 +1382,166 @@ footer {
 
 .lightbox-fechar:hover {
   background: rgba(255,255,255,0.3);
+}
+/* ===== MOBILE PORTRAIT — AJUSTES FINAIS ===== */
+
+@media (max-width: 600px) {
+  /* Section sem padding excessivo */
+  section {
+    margin: 10px 6px 24px;
+    padding: 14px 10px;
+    border-radius: 16px;
+  }
+
+  /* Cards mais compactos */
+  .presente {
+    padding: 10px;
+    border-radius: 14px;
+  }
+
+  .presente img {
+    height: 120px;
+  }
+
+  .presente h3 {
+    font-size: 12px;
+    min-height: 2.4em;
+    margin: 6px 0 4px;
+  }
+
+  .presente p {
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+
+  .presente button {
+    padding: 9px;
+    font-size: 12px;
+    border-radius: 10px;
+  }
+
+  /* Modal como bottom sheet */
+  .modal {
+    align-items: flex-end;
+  }
+
+  .modal-conteudo {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 20px 20px 0 0;
+    padding: 20px 16px 32px;
+    max-height: 92vh;
+    overflow-y: auto;
+  }
+
+  /* Hero menor */
+  .hero {
+    min-height: 40vh;
+    padding: 28px 16px 18px;
+  }
+
+  .hero h1 {
+    font-size: 44px;
+  }
+
+  .hero h2 {
+    font-size: 15px;
+  }
+
+  /* Contador mais compacto */
+  .arco-wrap,
+  .arco-wrap svg {
+    width: 66px;
+    height: 66px;
+  }
+
+  .arco-num {
+    font-size: 17px;
+  }
+
+  .arco-lbl {
+    font-size: 10px;
+  }
+
+  .contador-circular {
+    gap: 8px;
+  }
+
+  /* Nav compacto */
+  nav {
+    padding: 8px;
+    gap: 6px;
+  }
+
+  nav a {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+
+  /* CTAs em coluna */
+  .section-ctas {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .section-cta {
+    width: 100%;
+    justify-content: center;
+    padding: 14px;
+    font-size: 14px;
+  }
+
+  /* Cerimônia */
+  .cerimonia-section {
+    padding: 0 6px;
+    margin: 12px auto 24px;
+    gap: 12px;
+  }
+
+  .info-card-body {
+    padding: 14px;
+  }
+
+  .btn-navegacao-row {
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  /* Botão fechar maior no mobile */
+  .fechar {
+    font-size: 22px;
+    padding: 12px 16px;
+    top: 6px;
+    right: 6px;
+  }
+}
+
+/* iPhone SE e telas muito pequenas */
+@media (max-width: 375px) {
+  .lista-presentes {
+    gap: 8px;
+  }
+
+  .presente img {
+    height: 100px;
+  }
+
+  .presente h3 {
+    font-size: 11px;
+  }
+
+  nav a {
+    font-size: 12px;
+    padding: 5px 8px;
+  }
+
+  .arco-wrap,
+  .arco-wrap svg {
+    width: 58px;
+    height: 58px;
+  }
+
+  .arco-num {
+    font-size: 15px;
+  }
 }

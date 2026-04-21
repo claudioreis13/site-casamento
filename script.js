@@ -312,7 +312,7 @@ function atualizarContador() {
 
   if (diferenca <= 0) {
     const cont = document.querySelector(".contador-circular");
-    if (cont) cont.innerHTML = "<p style='font-size:22px;font-weight:500;color:#c97b84'>Já casados! 🎉</p>";
+    if (cont) cont.innerHTML = "<p style='font-size:22px;font-weight:500;color:#6B7A4E'>Já casados! 🎉</p>";
     return;
   }
 
@@ -396,7 +396,7 @@ function copiarPix() {
   navigator.clipboard.writeText(CONFIG.pix)
     .then(() => {
       botao.innerText = "PIX Copiado ✔";
-      botao.style.background = "#8b9b6e";
+      botao.style.background = "#6B7A4E";
       if (proximoPasso) proximoPasso.style.display = "block";
       dispararConfete();
 
@@ -443,7 +443,7 @@ function dispararConfete() {
     particleCount: 80,
     spread: 70,
     origin: { y: 0.6 },
-    colors: ["#c97b84", "#f4c0d1", "#fff", "#8b9b6e", "#ffeaa7"]
+    colors: ["#6B7A4E", "#B9CCAE", "#D4DECE", "#A1A1A0", "#fff"]
   });
 }
 
