@@ -31,10 +31,10 @@ const PRESENTES = [
   { id: "toalha",       nome: "Jogo de toalha banhão",                                        preco: 182.27,   img: "imagens/toalha.jpg" },
   { id: "edredon",      nome: "Edredon Queen 300 fios",                                       preco: 500.00,   img: "imagens/edredon.jpg" },
   { id: "purificador",  nome: "Purificador de água",                                          preco: 500.00,   img: "imagens/purificador.jpg" },
-  { id: "buque",        nome: "Aumente em 30% sua chance de pegar o buquê",                  preco: 150.00,   img: "imagens/buque.jpg",            humor: true },
+  { id: "buque",        nome: "Aumente em 30% sua chance de pegar o buquê",                   preco: 150.00,   img: "imagens/buque.jpg",            humor: true },
   { id: "convidado",    nome: "Levar alguém que não foi convidado",                           preco: 7965.49,  img: "imagens/convidado.jpg",        humor: true },
   { id: "cueca",        nome: "Cueca sexy para lua de mel",                                   preco: 100.00,   img: "imagens/cueca.jpg",            humor: true },
-  { id: "ronaldo",      nome: "Corte de cabelo do noivo por 6 meses",                        preco: 500.00,   img: "imagens/ronaldo.jpg",          humor: true },
+  { id: "ronaldo",      nome: "Corte de cabelo do noivo por 6 meses",                         preco: 500.00,   img: "imagens/ronaldo.jpg",          humor: true },
   { id: "assadeiras",   nome: "Conjunto de assadeiras Marinex",                               preco: 121.00,   img: "imagens/assadeiras.jpg" },
   { id: "tv",           nome: 'TV 60"',                                                       preco: 3000.00,  img: "imagens/tv.jpg" },
   { id: "parafusadeira",nome: "Parafusadeira e furadeira",                                    preco: 500.00,   img: "imagens/parafusadeira.jpg" },
@@ -57,10 +57,10 @@ const PRESENTES = [
   { id: "processador",  nome: "Multiprocessador Powerchop Philips Walita 127v",               preco: 500.00,   img: "imagens/processador.jpg" },
   { id: "criado",       nome: "Kit 2 Un Mesa de Cabeceira Sofia Estilo Industrial",           preco: 352.00,   img: "imagens/criado.jpg" },
   { id: "lateral",      nome: "Mesa Lateral para Sofá com Espelho Luxo",                      preco: 114.00,   img: "imagens/lateral.jpg" },
-  { id: "organizador",  nome: "Kit 4 Organizadores de Geladeira 3.8 Litros",                 preco: 76.00,    img: "imagens/organizador.jpg" },
+  { id: "organizador",  nome: "Kit 4 Organizadores de Geladeira 3.8 Litros",                  preco: 76.00,    img: "imagens/organizador.jpg" },
   { id: "pote",         nome: "Kit 3 a 10 Potes Herméticos 2L Dispenser Organizador Lavanderia", preco: 100.00, img: "imagens/pote.jpg" },
-  { id: "centro",       nome: "Kit 2 Mesas De Centro Madeira Design Orgânico Sala De Estar", preco: 285.00,   img: "imagens/centro.jpg" },
-  { id: "tv42",         nome: "Samsung Smartv 42 polegadas", preco: 1.500,   img: "imagens/tv42.jpg" },
+  { id: "centro",       nome: "Kit 2 Mesas De Centro Madeira Design Orgânico Sala De Estar",  preco: 285.00,   img: "imagens/centro.jpg" },
+  { id: "tv42",         nome: "Samsung Smartv 42 polegadas",                                  preco: 1500.00,   img: "imagens/tv42.jpg" },
 ];
 
 // ===== RENDER PRESENTES =====
