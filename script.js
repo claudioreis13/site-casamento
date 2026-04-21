@@ -22,7 +22,6 @@ const PRESENTES = [
   { id: "netflix",      nome: "1 ano de Netflix",                                             preco: 600.00,   img: "imagens/netflix.jpg" },
   { id: "esmeril",      nome: "Acessório para cortar a unha do dedão do noivo",               preco: 200.00,   img: "imagens/esmerilhadeira.jpg",  humor: true },
   { id: "cabeceira",    nome: "Cabeceira King Size",                                          preco: 800.00,   img: "imagens/cabeceira.jpg" },
-  { id: "batedeira",    nome: "Batedeira Philco",                                             preco: 450.10,   img: "imagens/batedeira.jpg" },
   { id: "rochele",      nome: "É claro que eu posso pagar, meu marido tem 2 empregos 😂",    preco: 700.00,   img: "imagens/rochele.jpg",          humor: true },
   { id: "cobreleito",   nome: "Cobreleito king",                                              preco: 477.67,   img: "imagens/cobreleito.jpg" },
   { id: "louca",        nome: "Lava louças 10 serviços",                                      preco: 2950.00,  img: "imagens/louca.jpg" },
@@ -61,6 +60,7 @@ const PRESENTES = [
   { id: "organizador",  nome: "Kit 4 Organizadores de Geladeira 3.8 Litros",                 preco: 76.00,    img: "imagens/organizador.jpg" },
   { id: "pote",         nome: "Kit 3 a 10 Potes Herméticos 2L Dispenser Organizador Lavanderia", preco: 100.00, img: "imagens/pote.jpg" },
   { id: "centro",       nome: "Kit 2 Mesas De Centro Madeira Design Orgânico Sala De Estar", preco: 285.00,   img: "imagens/centro.jpg" },
+  { id: "tv42",         nome: "Samsung Smartv 42 polegadas", preco: 1.500,   img: "imagens/tv42.jpg" },
 ];
 
 // ===== RENDER PRESENTES =====
