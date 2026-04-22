@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cerimônia — Bruna & Cláudio 📍</title>
+
+  <!-- SEO & Open Graph -->
+  <meta name="description" content="Informações da cerimônia de casamento de Bruna e Cláudio — 10/10/2026, 20h, Igreja Matriz de Nepomuceno/MG.">
+  <meta property="og:title" content="Cerimônia — Bruna & Cláudio 📍">
+  <meta property="og:description" content="10/10/2026 • 20h • Igreja Matriz, Nepomuceno - MG. Abra no Waze e não perca!">
+  <meta property="og:image" content="imagens/igreja.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+
+  <!-- Preload fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bruna & Cláudio 💍 — 10/10/2026">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💍</text></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="cerimonia">
+
+<div id="nav-placeholder"></div>
+
+<!-- HERO -->
+<div class="hero hero-cerimonia">
+  <h1>Bruna & Cláudio</h1>
+  <h2>Cerimônia</h2>
+  <p>Tudo que você precisa saber para não perder nada 💒</p>
+</div>
+
+<section class="cerimonia-section">
+
+  <!-- CARD: Informações gerais -->
+  <div class="info-card">
+    <div class="info-card-header">📅 Informações gerais</div>
+    <div class="info-card-body">
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="info-lbl">Data</div>
+          <div class="info-val" id="cer-data"></div>
+        </div>
+        <div class="info-item">
+          <div class="info-lbl">Horário</div>
+          <div class="info-val" id="cer-horario"></div>
+        </div>
+        <div class="info-item info-full">
+          <div class="info-lbl">Local</div>
+          <div class="info-val" id="cer-local"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD: Roteiro da noite -->
+  <div class="info-card">
+    <div class="info-card-header">🕐 Roteiro da noite</div>
+    <div class="info-card-body">
+      <div class="timeline">
+
+        <div class="tl-item">
+          <div class="tl-dot-col">
+            <div class="tl-dot"></div>
+            <div class="tl-line"></div>
+          </div>
+          <div class="tl-content">
+            <div class="tl-time" id="cer-hr-recepcao"></div>
+            <div class="tl-desc">Recepção dos convidados</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot-col">
+            <div class="tl-dot"></div>
+            <div class="tl-line"></div>
+          </div>
+          <div class="tl-content">
+            <div class="tl-time" id="cer-hr-cerimonia"></div>
+            <div class="tl-desc">Início da cerimônia</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot-col">
+            <div class="tl-dot tl-dot-festa"></div>
+          </div>
+          <div class="tl-content">
+            <div class="tl-time tl-time-festa" id="cer-hr-festa"></div>
+            <div class="tl-desc">Festa! 🎉</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD: Como chegar -->
+  <div class="info-card">
+    <div class="info-card-header">📍 Como chegar</div>
+    <div class="info-card-body">
+      <p class="local-endereco" id="cer-endereco"></p>
+      <div class="btn-navegacao-row">
+        <a href="#" id="btn-waze" target="_blank" class="btn-waze">
+          🚗 Waze
+        </a>
+        <a href="#" id="btn-gmaps" target="_blank" class="btn-gmaps">
+          🗺 Google Maps
+        </a>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<div id="footer-placeholder"></div>
+
+<script src="script.js"></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js').catch(() => {});
+  }
+</script>
+</body>
+</html>
