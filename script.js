@@ -68,14 +68,11 @@ function formatarPreco(preco) {
 
 // ===== RESERVADOS — BANCO DE DADOS =====
 function buscarReservados() {
-  try { return JSON.parse(localStorage.getItem("reservados") || "[]"); }
-  catch { return []; }
+  return []; // DESATIVADO TEMPORARIAMENTE
 }
 
 function marcarReservado(id) {
-  const lista = buscarReservados();
-  if (!lista.includes(id)) lista.push(id);
-  localStorage.setItem("reservados", JSON.stringify(lista));
+  // DESATIVADO TEMPORARIAMENTE
 }
 
 // ===== RENDER PRESENTES =====
