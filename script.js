@@ -1,5 +1,4 @@
 // ===== CONFIG CENTRAL =====
-// Edite aqui para atualizar todas as páginas automaticamente
 const CONFIG = {
   dataCasamento: new Date("2026-10-10T20:00:00"),
   dataFormatada: "10 de Outubro de 2026",
@@ -15,75 +14,73 @@ const CONFIG = {
 };
 
 // ===== LISTA DE PRESENTES =====
-// Para adicionar, remover ou editar um presente, mexa só aqui!
 const PRESENTES = [
-  { id: "jantar",        nome: "Aparelho de jantar",                                         preco: 500.00,   img: "imagens/jantar.jpg" },
-  { id: "ar",           nome: "Ar condicionado 12.000 btu",                                  preco: 2200.00,  img: "imagens/ar.jpg" },
-  { id: "netflix",      nome: "1 ano de Netflix",                                             preco: 600.00,   img: "imagens/netflix.jpg" },
-  { id: "esmeril",      nome: "Acessório para cortar a unha do dedão do noivo",               preco: 200.00,   img: "imagens/esmerilhadeira.jpg",  humor: true },
-  { id: "cabeceira",    nome: "Cabeceira King Size",                                          preco: 800.00,   img: "imagens/cabeceira.jpg" },
-  { id: "rochele",      nome: "É claro que eu posso pagar, meu marido tem 2 empregos 😂",    preco: 700.00,   img: "imagens/rochele.jpg",          humor: true },
-  { id: "cobreleito",   nome: "Cobreleito king",                                              preco: 477.67,   img: "imagens/cobreleito.jpg" },
-  { id: "louca",        nome: "Lava louças 10 serviços",                                      preco: 2950.00,  img: "imagens/louca.jpg" },
-  { id: "microondas",   nome: "Microondas 30 litros",                                         preco: 650.00,   img: "imagens/microondas.jpg" },
-  { id: "patolino",     nome: "Seja meu convidado preferido",                                 preco: 700.00,   img: "imagens/patolino.jpg",         humor: true },
-  { id: "razao",        nome: "Cobertor para a noiva que está coberta de razão",              preco: 200.00,   img: "imagens/razao.jpg",            humor: true },
-  { id: "toalha",       nome: "Jogo de toalha banhão",                                        preco: 182.27,   img: "imagens/toalha.jpg" },
-  { id: "edredon",      nome: "Edredon Queen 300 fios",                                       preco: 500.00,   img: "imagens/edredon.jpg" },
-  { id: "purificador",  nome: "Purificador de água",                                          preco: 500.00,   img: "imagens/purificador.jpg" },
-  { id: "buque",        nome: "Aumente em 30% sua chance de pegar o buquê",                   preco: 150.00,   img: "imagens/buque.jpg",            humor: true },
-  { id: "convidado",    nome: "Levar alguém que não foi convidado",                           preco: 7965.49,  img: "imagens/convidado.jpg",        humor: true },
-  { id: "cueca",        nome: "Cueca sexy para lua de mel",                                   preco: 100.00,   img: "imagens/cueca.jpg",            humor: true },
-  { id: "ronaldo",      nome: "Corte de cabelo do noivo por 6 meses",                         preco: 500.00,   img: "imagens/ronaldo.jpg",          humor: true },
-  { id: "assadeiras",   nome: "Conjunto de assadeiras Marinex",                               preco: 121.00,   img: "imagens/assadeiras.jpg" },
-  { id: "tv",           nome: 'TV 60"',                                                       preco: 3000.00,  img: "imagens/tv.jpg" },
-  { id: "parafusadeira",nome: "Parafusadeira e furadeira",                                    preco: 500.00,   img: "imagens/parafusadeira.jpg" },
-  { id: "julius",       nome: "Só pra dizer que não dei nada",                                preco: 20.00,    img: "imagens/julius.jpg",           humor: true },
-  { id: "tacas",        nome: "Taças de vinho",                                               preco: 50.00,    img: "imagens/tacas.jpg" },
-  { id: "tigela",       nome: "Conjunto de bowls",                                            preco: 50.00,    img: "imagens/tigela.jpg" },
-  { id: "boleira",      nome: "Boleira com tampa",                                            preco: 50.00,    img: "imagens/boleira.jpg" },
-  { id: "aspirador",    nome: "Aspirador 2 em 1",                                             preco: 200.00,   img: "imagens/aspirador.jpg" },
-  { id: "panela",       nome: "Panela de pressão elétrica",                                   preco: 500.00,   img: "imagens/panela.jpg" },
-  { id: "cadeira",      nome: "Cadeira ergonômica",                                           preco: 600.00,   img: "imagens/cadeira.jpg" },
-  { id: "mixer",        nome: "Mixer 3 em 1",                                                 preco: 170.00,   img: "imagens/mixer.jpg" },
-  { id: "cristaleira",  nome: "Cristaleira retrô",                                            preco: 470.00,   img: "imagens/cristaleira.jpg" },
-  { id: "americano",    nome: "Jogo americano crochê",                                        preco: 70.00,    img: "imagens/americano.jpg" },
-  { id: "espelho",      nome: "Espelho corpo inteiro",                                        preco: 478.00,   img: "imagens/espelho.jpg" },
-  { id: "jarra",        nome: "Kit jarra + taças",                                            preco: 70.00,    img: "imagens/jarra.jpg" },
-  { id: "panificadora", nome: "Panificadora",                                                 preco: 550.00,   img: "imagens/panificadora.jpg" },
-  { id: "chaleira",     nome: "Chaleira elétrica",                                            preco: 150.00,   img: "imagens/chaleira.jpg" },
-  { id: "navio",        nome: "Ajuda na lua de mel",                                          preco: 1000.00,  img: "imagens/navio.jpg" },
-  { id: "sobremesa",    nome: "Taças de sobremesa",                                           preco: 76.00,    img: "imagens/sobremesa.jpg" },
-  { id: "processador",  nome: "Multiprocessador Powerchop Philips Walita 127v",               preco: 500.00,   img: "imagens/processador.jpg" },
-  { id: "criado",       nome: "Kit 2 Un Mesa de Cabeceira Sofia Estilo Industrial",           preco: 352.00,   img: "imagens/criado.jpg" },
-  { id: "lateral",      nome: "Mesa Lateral para Sofá com Espelho Luxo",                      preco: 114.00,   img: "imagens/lateral.jpg" },
-  { id: "organizador",  nome: "Kit 4 Organizadores de Geladeira 3.8 Litros",                  preco: 76.00,    img: "imagens/organizador.jpg" },
-  { id: "pote",         nome: "Kit 3 a 10 Potes Herméticos 2L Dispenser Organizador Lavanderia", preco: 100.00, img: "imagens/pote.jpg" },
-  { id: "centro",       nome: "Kit 2 Mesas De Centro Madeira Design Orgânico Sala De Estar",  preco: 285.00,   img: "imagens/centro.jpg" },
-  { id: "tv42",         nome: "Samsung Smartv 42 polegadas",                                  preco: 1500.00,   img: "imagens/tv42.jpg" },
+  { id: "jantar",        nome: "Aparelho de jantar",                                             preco: 500.00,   img: "imagens/jantar.jpg" },
+  { id: "ar",            nome: "Ar condicionado 12.000 btu",                                     preco: 2200.00,  img: "imagens/ar.jpg" },
+  { id: "netflix",       nome: "1 ano de Netflix",                                               preco: 600.00,   img: "imagens/netflix.jpg" },
+  { id: "esmeril",       nome: "Acessório para cortar a unha do dedão do noivo",                 preco: 200.00,   img: "imagens/esmerilhadeira.jpg", humor: true },
+  { id: "cabeceira",     nome: "Cabeceira King Size",                                            preco: 800.00,   img: "imagens/cabeceira.jpg" },
+  { id: "rochele",       nome: "É claro que eu posso pagar, meu marido tem 2 empregos 😂",      preco: 700.00,   img: "imagens/rochele.jpg",        humor: true },
+  { id: "cobreleito",    nome: "Cobreleito king",                                                preco: 477.67,   img: "imagens/cobreleito.jpg" },
+  { id: "louca",         nome: "Lava louças 10 serviços",                                        preco: 2950.00,  img: "imagens/louca.jpg" },
+  { id: "microondas",    nome: "Microondas 30 litros",                                           preco: 650.00,   img: "imagens/microondas.jpg" },
+  { id: "patolino",      nome: "Seja meu convidado preferido",                                   preco: 700.00,   img: "imagens/patolino.jpg",       humor: true },
+  { id: "razao",         nome: "Cobertor para a noiva que está coberta de razão",                preco: 200.00,   img: "imagens/razao.jpg",          humor: true },
+  { id: "toalha",        nome: "Jogo de toalha banhão",                                          preco: 182.27,   img: "imagens/toalha.jpg" },
+  { id: "edredon",       nome: "Edredon Queen 300 fios",                                         preco: 500.00,   img: "imagens/edredon.jpg" },
+  { id: "purificador",   nome: "Purificador de água",                                            preco: 500.00,   img: "imagens/purificador.jpg" },
+  { id: "buque",         nome: "Aumente em 30% sua chance de pegar o buquê",                    preco: 150.00,   img: "imagens/buque.jpg",          humor: true },
+  { id: "convidado",     nome: "Levar alguém que não foi convidado",                             preco: 7965.49,  img: "imagens/convidado.jpg",      humor: true },
+  { id: "cueca",         nome: "Cueca sexy para lua de mel",                                     preco: 100.00,   img: "imagens/cueca.jpg",          humor: true },
+  { id: "ronaldo",       nome: "Corte de cabelo do noivo por 6 meses",                          preco: 500.00,   img: "imagens/ronaldo.jpg",        humor: true },
+  { id: "assadeiras",    nome: "Conjunto de assadeiras Marinex",                                 preco: 121.00,   img: "imagens/assadeiras.jpg" },
+  { id: "tv",            nome: 'TV 60"',                                                         preco: 3000.00,  img: "imagens/tv.jpg" },
+  { id: "parafusadeira", nome: "Parafusadeira e furadeira",                                      preco: 500.00,   img: "imagens/parafusadeira.jpg" },
+  { id: "julius",        nome: "Só pra dizer que não dei nada",                                  preco: 20.00,    img: "imagens/julius.jpg",         humor: true },
+  { id: "tacas",         nome: "Taças de vinho",                                                 preco: 50.00,    img: "imagens/tacas.jpg" },
+  { id: "tigela",        nome: "Conjunto de bowls",                                              preco: 50.00,    img: "imagens/tigela.jpg" },
+  { id: "boleira",       nome: "Boleira com tampa",                                              preco: 50.00,    img: "imagens/boleira.jpg" },
+  { id: "aspirador",     nome: "Aspirador 2 em 1",                                              preco: 200.00,   img: "imagens/aspirador.jpg" },
+  { id: "panela",        nome: "Panela de pressão elétrica",                                     preco: 500.00,   img: "imagens/panela.jpg" },
+  { id: "cadeira",       nome: "Cadeira ergonômica",                                             preco: 600.00,   img: "imagens/cadeira.jpg" },
+  { id: "mixer",         nome: "Mixer 3 em 1",                                                  preco: 170.00,   img: "imagens/mixer.jpg" },
+  { id: "cristaleira",   nome: "Cristaleira retrô",                                              preco: 470.00,   img: "imagens/cristaleira.jpg" },
+  { id: "americano",     nome: "Jogo americano crochê",                                          preco: 70.00,    img: "imagens/americano.jpg" },
+  { id: "espelho",       nome: "Espelho corpo inteiro",                                          preco: 478.00,   img: "imagens/espelho.jpg" },
+  { id: "jarra",         nome: "Kit jarra + taças",                                              preco: 70.00,    img: "imagens/jarra.jpg" },
+  { id: "panificadora",  nome: "Panificadora",                                                   preco: 550.00,   img: "imagens/panificadora.jpg" },
+  { id: "chaleira",      nome: "Chaleira elétrica",                                              preco: 150.00,   img: "imagens/chaleira.jpg" },
+  { id: "navio",         nome: "Ajuda na lua de mel",                                            preco: 1000.00,  img: "imagens/navio.jpg" },
+  { id: "sobremesa",     nome: "Taças de sobremesa",                                             preco: 76.00,    img: "imagens/sobremesa.jpg" },
+  { id: "processador",   nome: "Multiprocessador Powerchop Philips Walita 127v",                 preco: 500.00,   img: "imagens/processador.jpg" },
+  { id: "criado",        nome: "Kit 2 Un Mesa de Cabeceira Sofia Estilo Industrial",             preco: 352.00,   img: "imagens/criado.jpg" },
+  { id: "lateral",       nome: "Mesa Lateral para Sofá com Espelho Luxo",                        preco: 114.00,   img: "imagens/lateral.jpg" },
+  { id: "organizador",   nome: "Kit 4 Organizadores de Geladeira 3.8 Litros",                   preco: 76.00,    img: "imagens/organizador.jpg" },
+  { id: "pote",          nome: "Kit 3 a 10 Potes Herméticos 2L Dispenser Organizador Lavanderia", preco: 100.00, img: "imagens/pote.jpg" },
+  { id: "centro",        nome: "Kit 2 Mesas De Centro Madeira Design Orgânico Sala De Estar",   preco: 285.00,   img: "imagens/centro.jpg" },
+  { id: "tv42",          nome: "Samsung Smartv 42 polegadas",                                    preco: 1500.00,  img: "imagens/tv42.jpg" },
 ];
 
-// ===== RENDER PRESENTES =====
+// ===== HELPERS =====
 function formatarPreco(preco) {
   return preco.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 }
 
-function reservados() {
-  try { return JSON.parse(localStorage.getItem("reservados") || "[]"); }
-  catch { return []; }
+// ===== RESERVADOS — BANCO DE DADOS =====
+function buscarReservados() {
+  return []; // DESATIVADO TEMPORARIAMENTE
 }
 
 function marcarReservado(id) {
-  const lista = reservados();
-  if (!lista.includes(id)) lista.push(id);
-  localStorage.setItem("reservados", JSON.stringify(lista));
+  // DESATIVADO TEMPORARIAMENTE
 }
 
+// ===== RENDER PRESENTES =====
 function renderPresentes(lista) {
   const container = document.querySelector(".lista-presentes");
   if (!container) return;
 
-  const res = reservados();
+  const res = [];
 
   container.innerHTML = lista.map(p => {
     const estaReservado = res.includes(p.id);
@@ -99,10 +96,8 @@ function renderPresentes(lista) {
     </div>`;
   }).join("");
 
-  // Atualiza contador
   atualizarContadorResultados(lista.length);
 
-  // Rebind event listeners
   container.querySelectorAll(".btn-presentear:not([disabled])").forEach(botao => {
     botao.addEventListener("click", (event) => {
       efeitoClique(event);
@@ -123,23 +118,17 @@ function aplicarFiltros() {
   let lista = [...PRESENTES];
   const { termo, faixa, ordem } = estadoAtual;
 
-  // Busca
   if (termo) lista = lista.filter(p => p.nome.toLowerCase().includes(termo));
-
-  // Faixa de preço
   if (faixa === "ate200")    lista = lista.filter(p => p.preco <= 200);
   if (faixa === "200a500")   lista = lista.filter(p => p.preco > 200  && p.preco <= 500);
   if (faixa === "500a1000")  lista = lista.filter(p => p.preco > 500  && p.preco <= 1000);
   if (faixa === "acima1000") lista = lista.filter(p => p.preco > 1000);
-
-  // Ordenação
   if (ordem === "menor") lista.sort((a, b) => a.preco - b.preco);
   if (ordem === "maior") lista.sort((a, b) => b.preco - a.preco);
   if (ordem === "az")    lista.sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR"));
 
   renderPresentes(lista);
 
-  // Mensagem de nenhum resultado
   const container = document.querySelector(".lista-presentes");
   const semResultado = document.getElementById("sem-resultado");
   if (lista.length === 0) {
@@ -222,7 +211,7 @@ function renderFooter() {
   return `<footer>
     <p>Bruna &amp; Cláudio 💖</p>
     <p>Obrigado por fazer parte desse momento especial</p>
-    <p>© 2026</p>
+    <p>© ${new Date().getFullYear()}</p>
   </footer>`;
 }
 
@@ -232,11 +221,9 @@ document.addEventListener("DOMContentLoaded", () => {
   if (navEl) navEl.outerHTML = renderNav();
   if (footerEl) footerEl.outerHTML = renderFooter();
 
-  // Data contextual do contador
   const dataLabel = document.getElementById('contador-data-label');
   if (dataLabel) dataLabel.innerText = CONFIG.dataFormatada + ' • ' + CONFIG.horarioCerimonia;
 
-  // Dados da cerimônia
   const campos = {
     'cer-data':         CONFIG.dataFormatada,
     'cer-horario':      CONFIG.horarioCerimonia,
@@ -256,11 +243,9 @@ document.addEventListener("DOMContentLoaded", () => {
   if (btnWaze)  btnWaze.href  = CONFIG.wazeUrl;
   if (btnGmaps) btnGmaps.href = CONFIG.gmapsUrl;
 
-  // Renderiza presentes a partir do array
   if (document.querySelector(".lista-presentes")) {
     renderPresentes(PRESENTES);
 
-    // Controles
     const busca  = document.getElementById("busca-presente");
     const filtro = document.getElementById("filtro-preco");
     const ordem  = document.getElementById("ordenacao");
@@ -270,7 +255,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (ordem)  ordem.addEventListener("change",  () => { estadoAtual.ordem = ordem.value; aplicarFiltros(); });
   }
 
-  // Modal
   const modal = document.getElementById("modal");
   if (modal) {
     modal.addEventListener("click", (e) => { if (e.target === modal) fecharModal(); });
@@ -280,7 +264,6 @@ document.addEventListener("DOMContentLoaded", () => {
   interceptarLinks();
   window.scrollTo(0, 0);
 
-  // Animação reveal ao entrar na viewport
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -294,7 +277,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ===== CONTADOR CIRCULAR =====
-const CIRC = 2 * Math.PI * 34; // circunferência r=34
+const CIRC = 2 * Math.PI * 34;
 
 function setArco(id, valor, maximo) {
   const el = document.getElementById(id);
@@ -312,23 +295,21 @@ function atualizarContador() {
 
   if (diferenca <= 0) {
     const cont = document.querySelector(".contador-circular");
-    if (cont) cont.innerHTML = "<p style='font-size:22px;font-weight:500;color:#6B7A4E'>Já casados! 🎉</p>";
+    if (cont) cont.innerHTML = "<p style='font-size:22px;font-weight:500;color:var(--cor-principal)'>Já casados! 🎉</p>";
     return;
   }
 
   const pad = (n) => String(n).padStart(2, "0");
-
-  const dias    = Math.floor(diferenca / (1000 * 60 * 60 * 24));
-  const horas   = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
-  const minutos = Math.floor((diferenca / (1000 * 60)) % 60);
-  const segundos= Math.floor((diferenca / 1000) % 60);
+  const dias     = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+  const horas    = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
+  const minutos  = Math.floor((diferenca / (1000 * 60)) % 60);
+  const segundos = Math.floor((diferenca / 1000) % 60);
 
   document.getElementById("dias").innerText     = pad(dias);
   document.getElementById("horas").innerText    = pad(horas);
   document.getElementById("minutos").innerText  = pad(minutos);
   document.getElementById("segundos").innerText = pad(segundos);
 
-  // Atualiza aria-labels para leitores de tela
   const aD = document.getElementById("arco-item-dias");
   const aH = document.getElementById("arco-item-horas");
   const aM = document.getElementById("arco-item-minutos");
@@ -338,7 +319,6 @@ function atualizarContador() {
   if (aM) aM.setAttribute("aria-label", `${minutos} minutos`);
   if (aS) aS.setAttribute("aria-label", `${segundos} segundos`);
 
-  // Atualiza os arcos SVG
   setArco("arco-dias",     dias % 365, 365);
   setArco("arco-horas",    horas,       24);
   setArco("arco-minutos",  minutos,     60);
@@ -359,19 +339,16 @@ function comprar(botao) {
 
   presenteSelecionado = card;
 
-  // Preenche modal
   document.getElementById("modal-img").src         = presente.img;
   document.getElementById("modal-img").alt         = presente.nome;
   document.getElementById("modal-nome").innerText  = presente.nome;
   document.getElementById("modal-valor").innerText = formatarPreco(presente.preco);
   document.getElementById("modal-pix").innerText   = CONFIG.pix;
 
-  // WhatsApp com nome do presente
   const msg = encodeURIComponent("Oii Bruna! Quero presentear vocês com: " + presente.nome);
   const btnWpp = document.getElementById("btn-whatsapp-modal");
   if (btnWpp) btnWpp.href = "https://wa.me/5535997167717?text=" + msg;
 
-  // Reseta estado
   const btnPix = document.querySelector(".btn-pix");
   if (btnPix) { btnPix.innerText = "Copiar PIX"; btnPix.style.background = ""; }
   const proximoPasso = document.getElementById("modal-proximo-passo");
@@ -400,17 +377,14 @@ function copiarPix() {
       if (proximoPasso) proximoPasso.style.display = "block";
       dispararConfete();
 
-      // Marca como reservado no localStorage
       if (presenteSelecionado) {
-        const id = presenteSelecionado.dataset.id;
-        marcarReservado(id);
+        marcarReservado(presenteSelecionado.dataset.id);
       }
 
       setTimeout(() => {
         fecharModal();
         botao.innerText = "Copiar PIX";
         botao.style.background = "";
-        // Atualiza o card visualmente
         if (presenteSelecionado) {
           presenteSelecionado.classList.add("reservado");
           const btn = presenteSelecionado.querySelector(".btn-presentear");
