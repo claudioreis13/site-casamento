@@ -10,8 +10,7 @@ const CONFIG = {
   wazeUrl: "https://waze.com/ul?q=Igreja+Matriz+Nepomuceno+MG&navigate=yes",
   gmapsUrl: "https://www.google.com/maps/search/Igreja+Matriz+Nepomuceno+MG",
   pix: "cr.reis@live.com",
-  whatsapp: "https://wa.me/5535997167717?text=oii%20Bruna",
-  apiUrl: "https://casamento-backend-production.up.railway.app"
+  whatsapp: "https://wa.me/5535997167717?text=oii%20Bruna"
 };
 
 // ===== LISTA DE PRESENTES =====
@@ -68,37 +67,23 @@ function formatarPreco(preco) {
 }
 
 // ===== RESERVADOS — BANCO DE DADOS =====
-async function buscarReservados() {
-  try {
-    const res = await fetch(`${CONFIG.apiUrl}/reservados`);
-    const data = await res.json();
-    return data.reservados || [];
-  } catch {
-    try { return JSON.parse(localStorage.getItem("reservados") || "[]"); }
-    catch { return []; }
-  }
+function buscarReservados() {
+  try { return JSON.parse(localStorage.getItem("reservados") || "[]"); }
+  catch { return []; }
 }
 
-async function marcarReservado(id) {
-  try {
-    await fetch(`${CONFIG.apiUrl}/reservar`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id }),
-    });
-  } catch {
-    const lista = JSON.parse(localStorage.getItem("reservados") || "[]");
-    if (!lista.includes(id)) lista.push(id);
-    localStorage.setItem("reservados", JSON.stringify(lista));
-  }
+function marcarReservado(id) {
+  const lista = buscarReservados();
+  if (!lista.includes(id)) lista.push(id);
+  localStorage.setItem("reservados", JSON.stringify(lista));
 }
 
 // ===== RENDER PRESENTES =====
-async function renderPresentes(lista) {
+function renderPresentes(lista) {
   const container = document.querySelector(".lista-presentes");
   if (!container) return;
 
-  const res = await buscarReservados();
+  const res = [];
 
   container.innerHTML = lista.map(p => {
     const estaReservado = res.includes(p.id);
