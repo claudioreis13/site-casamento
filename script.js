@@ -66,13 +66,16 @@ function formatarPreco(preco) {
   return preco.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 }
 
-// ===== RESERVADOS — BANCO DE DADOS =====
+// ===== RESERVADOS — LOCALSTORAGE =====
 function buscarReservados() {
-  return []; // DESATIVADO TEMPORARIAMENTE
+  try { return JSON.parse(localStorage.getItem("reservados") || "[]"); }
+  catch { return []; }
 }
 
 function marcarReservado(id) {
-  // DESATIVADO TEMPORARIAMENTE
+  const lista = buscarReservados();
+  if (!lista.includes(id)) lista.push(id);
+  localStorage.setItem("reservados", JSON.stringify(lista));
 }
 
 // ===== RENDER PRESENTES =====
@@ -145,6 +148,7 @@ function aplicarFiltros() {
 }
 
 // ===== CONTROLES MOBILE =====
+let timeoutBusca; // Para debounce
 function toggleFiltros() {
   const painel = document.getElementById("controles-painel");
   const btn = document.getElementById("btn-filtros-toggle");
@@ -250,7 +254,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const filtro = document.getElementById("filtro-preco");
     const ordem  = document.getElementById("ordenacao");
 
-    if (busca)  busca.addEventListener("input",  () => { estadoAtual.termo = busca.value.toLowerCase(); atualizarBadgeFiltro(); aplicarFiltros(); });
+    if (busca)  busca.addEventListener("input",  () => { 
+      clearTimeout(timeoutBusca);
+      timeoutBusca = setTimeout(() => {
+        estadoAtual.termo = busca.value.toLowerCase();
+        atualizarBadgeFiltro();
+        aplicarFiltros();
+      }, 300);
+    });
     if (filtro) filtro.addEventListener("change", () => { estadoAtual.faixa = filtro.value; atualizarBadgeFiltro(); aplicarFiltros(); });
     if (ordem)  ordem.addEventListener("change",  () => { estadoAtual.ordem = ordem.value; aplicarFiltros(); });
   }
@@ -370,6 +381,10 @@ function copiarPix() {
   const botao = document.querySelector(".btn-pix");
   const proximoPasso = document.getElementById("modal-proximo-passo");
 
+  // Loading state
+  botao.innerText = "⏳ Copiando...";
+  botao.disabled = true;
+
   navigator.clipboard.writeText(CONFIG.pix)
     .then(() => {
       botao.innerText = "PIX Copiado ✔";
@@ -385,6 +400,7 @@ function copiarPix() {
         fecharModal();
         botao.innerText = "Copiar PIX";
         botao.style.background = "";
+        botao.disabled = false;
         if (presenteSelecionado) {
           presenteSelecionado.classList.add("reservado");
           const btn = presenteSelecionado.querySelector(".btn-presentear");
@@ -395,6 +411,7 @@ function copiarPix() {
     .catch(() => {
       botao.innerText = CONFIG.pix;
       botao.style.fontSize = "12px";
+      botao.disabled = false;
       setTimeout(() => { botao.innerText = "Copiar PIX"; botao.style.fontSize = ""; }, 4000);
     });
 }
@@ -424,10 +441,20 @@ function dispararConfete() {
 // ===== LIGHTBOX =====
 function abrirLightbox() {
   const modalImg = document.getElementById("modal-img");
+  const modalNome = document.getElementById("modal-nome");
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightbox-img");
+  const lightboxTitulo = document.getElementById("lightbox-titulo");
+  
   if (!modalImg || !lightbox || !lightboxImg) return;
+  
   lightboxImg.src = modalImg.src;
   lightboxImg.alt = modalImg.alt;
+  
+  // Adiciona título do presente no lightbox
+  if (lightboxTitulo && modalNome) {
+    lightboxTitulo.innerText = modalNome.innerText;
+  }
+  
   lightbox.showModal();
 }

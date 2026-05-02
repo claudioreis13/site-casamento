@@ -57,9 +57,158 @@
 
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💍</text></svg>">
   <link rel="stylesheet" href="style.css">
+  
+  <style>
+    /* Loading Screen — Minimalista, Sofisticado, Moderno */
+    #loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #F5F5F0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    .loading-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+    }
+
+    /* Logo animado — linha minimalista */
+    .loading-logo {
+      width: 80px;
+      height: 80px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .loading-logo svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 2px 8px rgba(107, 122, 78, 0.1));
+    }
+
+    .ring {
+      width: 80px;
+      height: 80px;
+      border: 2px solid transparent;
+      border-top: 2px solid #6B7A4E;
+      border-radius: 50%;
+      animation: rotate 2s linear infinite;
+    }
+
+    .ring::after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      border: 2px solid transparent;
+      border-right: 2px solid #B9CCAE;
+      border-radius: 50%;
+      animation: rotate-reverse 1.5s linear infinite;
+      top: 10px;
+      left: 10px;
+    }
+
+    /* Indicador minimalista */
+    .loading-indicator {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      background: #6B7A4E;
+      border-radius: 50%;
+      opacity: 0.4;
+      animation: dot-fade 1.4s infinite;
+    }
+
+    .dot:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    .dot:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .dot:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    /* Texto minimalista */
+    .loading-text {
+      font-size: 13px;
+      letter-spacing: 2px;
+      color: #A1A1A0;
+      text-transform: uppercase;
+      font-weight: 500;
+      animation: text-fade 2s ease-in-out infinite;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes rotate-reverse {
+      from { transform: rotate(360deg); }
+      to { transform: rotate(0deg); }
+    }
+
+    @keyframes dot-fade {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    @keyframes text-fade {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    /* Fade out quando terminar */
+    #loading-screen.hide {
+      animation: fadeOut 0.6s ease forwards;
+    }
+
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+  </style>
 </head>
 
 <body>
+
+<!-- LOADING SCREEN -->
+<div id="loading-screen">
+  <div class="loading-container">
+    <div class="loading-logo">
+      <div class="ring"></div>
+    </div>
+    
+    <div class="loading-indicator">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+
+    <div class="loading-text">Carregando</div>
+  </div>
+</div>
 
 <div id="nav-placeholder"></div>
 
@@ -150,6 +299,20 @@
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./sw.js').catch(() => {});
   }
+  
+  // Loading screen — mostra por 3 segundos e desaparece
+  document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+      const loadingScreen = document.getElementById("loading-screen");
+      if (loadingScreen) {
+        loadingScreen.classList.add("hide");
+        // Remove do DOM depois de animar
+        setTimeout(() => {
+          loadingScreen.style.display = "none";
+        }, 500);
+      }
+    }, 3000);
+  });
 </script>
 </body>
 </html>

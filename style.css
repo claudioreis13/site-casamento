@@ -588,6 +588,27 @@ section {
   transition: transform 0.3s ease;
 }
 
+/* Hint visual para arrastar no mobile */
+.modal-conteudo::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 4px;
+  background: #ddd;
+  border-radius: 2px;
+  display: none;
+}
+
+/* Mostrar hint apenas em mobile */
+@media (max-width: 600px) {
+  .modal-conteudo::before {
+    display: block;
+  }
+}
+
 .modal.ativo .modal-conteudo {
   transform: scale(1);
 }
@@ -1342,11 +1363,15 @@ footer {
 .lightbox {
   border: none;
   background: rgba(0,0,0,0.92);
-  padding: 0;
+  padding: 20px;
   max-width: 95vw;
   max-height: 95vh;
   border-radius: 12px;
-  overflow: hidden;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .lightbox::backdrop {
@@ -1356,9 +1381,19 @@ footer {
 .lightbox img {
   display: block;
   max-width: 90vw;
-  max-height: 88vh;
+  max-height: 75vh;
   object-fit: contain;
   border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.lightbox-titulo {
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  margin: 0;
+  padding: 0 20px;
 }
 
 .lightbox-fechar {
