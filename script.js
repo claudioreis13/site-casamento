@@ -59,7 +59,6 @@ const PRESENTES = [
   { id: "pote",          nome: "Kit 3 a 10 Potes Herméticos 2L Dispenser Organizador Lavanderia", preco: 100.00, img: "imagens/pote.jpg" },
   { id: "centro",        nome: "Kit 2 Mesas De Centro Madeira Design Orgânico Sala De Estar",   preco: 285.00,   img: "imagens/centro.jpg" },
   { id: "tv42",          nome: "Samsung Smartv 42 polegadas",                                    preco: 1500.00,  img: "imagens/tv42.jpg" },
-  { id: "surpresa",      nome: "Escolha você mesmo! 🎉",                                         preco: 0,        img: "imagens/surpresa.jpg", surpresa: true },
 ];
 
 // ===== HELPERS =====
@@ -351,12 +350,6 @@ function comprar(botao) {
 
   presenteSelecionado = card;
 
-  // Se for surpresa, mostrar modal especial
-  if (presente.surpresa) {
-    mostrarModalSurpresa(presente);
-    return;
-  }
-
   document.getElementById("modal-img").src         = presente.img;
   document.getElementById("modal-img").alt         = presente.nome;
   document.getElementById("modal-nome").innerText  = presente.nome;
@@ -368,101 +361,13 @@ function comprar(botao) {
   if (btnWpp) btnWpp.href = "https://wa.me/5535997167717?text=" + msg;
 
   const btnPix = document.querySelector(".btn-pix");
-  if (btnPix) { btnPix.innerText = "Copiar PIX"; btnPix.style.background = ""; btnPix.onclick = copiarPix; }
+  if (btnPix) { btnPix.innerText = "Copiar PIX"; btnPix.style.background = ""; }
   const proximoPasso = document.getElementById("modal-proximo-passo");
   if (proximoPasso) proximoPasso.style.display = "none";
 
   const modal = document.getElementById("modal");
   modal.style.display = "flex";
   setTimeout(() => modal.classList.add("ativo"), 10);
-}
-
-// ===== MODAL SURPRESA =====
-function mostrarModalSurpresa(presente) {
-  const modal = document.getElementById("modal");
-  
-  document.getElementById("modal-img").src = presente.img;
-  document.getElementById("modal-img").alt = presente.nome;
-  document.getElementById("modal-nome").innerText = presente.nome;
-  
-  // Mostrar input de valor ao invés do preço fixo
-  document.getElementById("modal-valor").innerHTML = `
-    <input 
-      type="number" 
-      id="valor-surpresa" 
-      placeholder="Quanto você quer gastar?" 
-      min="10" 
-      step="10"
-      style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 16px; font-family: Poppins, sans-serif;"
-    />
-  `;
-  
-  document.getElementById("modal-pix").innerText = "PIX será gerado com seu valor";
-  
-  const btnPix = document.querySelector(".btn-pix");
-  if (btnPix) { 
-    btnPix.innerText = "Gerar PIX com valor"; 
-    btnPix.style.background = ""; 
-    btnPix.onclick = copiarPixSurpresa;
-  }
-  
-  const proximoPasso = document.getElementById("modal-proximo-passo");
-  if (proximoPasso) proximoPasso.style.display = "none";
-
-  modal.style.display = "flex";
-  setTimeout(() => modal.classList.add("ativo"), 10);
-  
-  // Focus no input
-  setTimeout(() => {
-    const input = document.getElementById("valor-surpresa");
-    if (input) input.focus();
-  }, 300);
-}
-
-function copiarPixSurpresa() {
-  const valorInput = document.getElementById("valor-surpresa");
-  const valor = parseFloat(valorInput.value);
-  
-  if (!valor || valor < 10) {
-    alert("Digite um valor mínimo de R$ 10");
-    return;
-  }
-  
-  const botao = document.querySelector(".btn-pix");
-  const proximoPasso = document.getElementById("modal-proximo-passo");
-  
-  botao.innerText = "⏳ Gerando...";
-  botao.disabled = true;
-
-  // Gerar PIX dinâmico com o valor escolhido
-  const pixDinamico = `${CONFIG.pix} | R$ ${valor.toFixed(2)}`;
-  
-  navigator.clipboard.writeText(pixDinamico)
-    .then(() => {
-      botao.innerText = "PIX Gerado ✔";
-      botao.style.background = "#6B7A4E";
-      if (proximoPasso) proximoPasso.style.display = "block";
-      dispararConfete();
-
-      if (presenteSelecionado) {
-        marcarReservado("surpresa");
-      }
-
-      setTimeout(() => {
-        fecharModal();
-        botao.innerText = "Gerar PIX com valor";
-        botao.style.background = "";
-        botao.disabled = false;
-        botao.onclick = copiarPixSurpresa;
-      }, 2500);
-    })
-    .catch(() => {
-      botao.innerText = "Erro ao copiar";
-      botao.disabled = false;
-      setTimeout(() => { 
-        botao.innerText = "Gerar PIX com valor"; 
-      }, 2000);
-    });
 }
 
 function fecharModal() {
@@ -553,3 +458,31 @@ function abrirLightbox() {
   
   lightbox.showModal();
 }
+
+// ===== DARK MODE FUNCIONAL =====
+document.addEventListener("DOMContentLoaded", function() {
+  const darkModeToggle = document.getElementById("dark-mode-toggle");
+  if (!darkModeToggle) return;
+  
+  const htmlElement = document.documentElement;
+  
+  // Restaurar tema salvo
+  const temaSalvo = localStorage.getItem("tema-casamento") || "light";
+  if (temaSalvo === "dark") {
+    htmlElement.setAttribute("data-theme", "dark");
+    darkModeToggle.innerText = "☀️";
+  }
+
+  // Clique no botão
+  darkModeToggle.addEventListener("click", function(e) {
+    e.preventDefault();
+    const temaAtual = htmlElement.getAttribute("data-theme") || "light";
+    const novoTema = temaAtual === "dark" ? "light" : "dark";
+    
+    htmlElement.setAttribute("data-theme", novoTema);
+    localStorage.setItem("tema-casamento", novoTema);
+    darkModeToggle.innerText = novoTema === "dark" ? "☀️" : "🌙";
+  });
+});
+
+
