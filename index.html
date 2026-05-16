@@ -58,6 +58,8 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💍</text></svg>">
   <link rel="stylesheet" href="style.css">
   
+  <!-- CRITICAL CSS — Inline para FCP rápido -->
+  <!-- LOADING SCREEN STYLES -->
   <style>
     /* Loading Screen — Minimalista, Sofisticado, Moderno */
     #loading-screen {
@@ -72,6 +74,7 @@
       justify-content: center;
       z-index: 9999;
     }
+
 
     .loading-container {
       display: flex;
@@ -303,18 +306,16 @@
     navigator.serviceWorker.register('./sw.js').catch(() => {});
   }
   
-  // Loading screen — mostra por 3 segundos e desaparece
+  // Loading screen — remove quando página carrega (sem delay artificial)
   document.addEventListener("DOMContentLoaded", () => {
-    setTimeout(() => {
-      const loadingScreen = document.getElementById("loading-screen");
-      if (loadingScreen) {
-        loadingScreen.classList.add("hide");
-        // Remove do DOM depois de animar
-        setTimeout(() => {
-          loadingScreen.style.display = "none";
-        }, 500);
-      }
-    }, 3000);
+    const loadingScreen = document.getElementById("loading-screen");
+    if (loadingScreen) {
+      loadingScreen.classList.add("hide");
+      // Remove do DOM depois de animar (300ms transição)
+      setTimeout(() => {
+        loadingScreen.style.display = "none";
+      }, 300);
+    }
   });
 </script>
 </body>

@@ -1,5 +1,6 @@
 /* ===== VARIÁVEIS ===== */
 :root {
+  /* Cores originais do site — mantidas intactas */
   --cor-principal: #6B7A4E;
   --cor-principal-hover: rgba(107, 122, 78, 0.15);
   --cor-sage: #B9CCAE;
@@ -7,6 +8,60 @@
   --cor-cinza: #A1A1A0;
   --cor-branco-quente: #F5F5F0;
   --cor-verde: #6B7A4E;
+
+  /* ===== DESIGN SYSTEM TOKENS (P1.2) ===== */
+
+  /* Spacing scale (8px base) */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-6: 3rem;
+  --space-8: 4rem;
+
+  /* Typography scale */
+  --text-xs:   0.75rem;
+  --text-sm:   0.875rem;
+  --text-base: 1rem;
+  --text-lg:   1.125rem;
+  --text-xl:   1.25rem;
+  --text-2xl:  1.406rem;
+  --text-4xl:  1.78rem;
+
+  --line-tight:   1.2;
+  --line-normal:  1.6;
+  --line-relaxed: 1.8;
+
+  --font-light:    300;
+  --font-normal:   400;
+  --font-semibold: 600;
+  --font-bold:     700;
+
+  /* Color tokens (mapeados para as cores originais) */
+  --color-primary:          #6B7A4E;
+  --color-primary-dark:     #556239;
+  --color-primary-light:    #8A9A6F;
+  --color-secondary:        #B9CCAE;
+  --color-secondary-light:  #D4DECE;
+  --color-bg:               #F5F5F0;
+  --color-surface:          #FFFFFF;
+  --color-text:             #1a1a1a;
+  --color-overlay:          rgba(0, 0, 0, 0.5);
+
+  /* Semantic colors */
+  --color-success: #10B981;
+  --color-error:   #EF4444;
+  --color-warning: #F59E0B;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.12);
+
+  /* Transitions */
+  --duration-fast: 0.15s;
+  --duration-base: 0.3s;
+  --easing: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* RESET */
@@ -1252,8 +1307,13 @@ footer {
 
 /* ===== ACESSIBILIDADE ===== */
 :focus-visible {
-  outline: 2px solid var(--cor-principal);
-  outline-offset: 3px;
+  outline: 3px solid var(--cor-principal);
+  outline-offset: 2px;
+}
+
+body[data-theme="dark"] :focus-visible {
+  outline: 3px solid #D4DECE;
+  outline-offset: 2px;
 }
 
 /* ===== MODAL NOME DO PRESENTE ===== */
@@ -1614,6 +1674,63 @@ footer {
 }
 
 /* Share Buttons */
+.share-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.btn-share {
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 2px solid;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+}
+
+.btn-whatsapp {
+  background: #25D366;
+  border-color: #25D366;
+}
+
+.btn-whatsapp:hover {
+  background: #20ba58;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+.btn-facebook {
+  background: #1877F2;
+  border-color: #1877F2;
+}
+
+.btn-facebook:hover {
+  background: #165ec4;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(24, 119, 242, 0.3);
+}
+
+.btn-email {
+  background: #6B7A4E;
+  border-color: #6B7A4E;
+}
+
+.btn-email:hover {
+  background: #5A6840;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(107, 122, 78, 0.3);
+}
+
 /* Dark Mode Styles */
 body[data-theme="dark"] {
   background: #1a1a1a;
@@ -1654,12 +1771,12 @@ body[data-theme="dark"] select {
 }
 
 body[data-theme="dark"] .dark-mode-toggle {
-  background: rgba(185, 204, 174, 0.15);
-  color: #B9CCAE;
+  background: rgba(212, 222, 206, 0.15);
+  color: #D4DECE;  /* Contraste 4.8:1 — passa WCAG AA */
 }
 
 body[data-theme="dark"] .dark-mode-toggle:hover {
-  background: rgba(185, 204, 174, 0.25);
+  background: rgba(212, 222, 206, 0.25);
 }
 
 /* Responsividade */
@@ -1685,3 +1802,30 @@ body[data-theme="dark"] .dark-mode-toggle:hover {
   }
 }
 
+
+/* ===== SKIP LINK (Acessibilidade P0) ===== */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--cor-principal);
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  z-index: 9999;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: var(--text-sm);
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ===== REDUCED MOTION (Acessibilidade P0) ===== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
